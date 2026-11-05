@@ -2,7 +2,7 @@
 
 A wake-up tracker with a plant in it. Pick a wake-up window, prove you're up in time each morning, and your plant grows. Miss a morning and it starts to drop its leaves. The plant is drawn as a cyanotype, the old blue sun-print process.
 
-**Use it:** https://kausik2005.github.io/verse-garden/
+**Use it:** https://kausik2005.github.io/sunprint/
 
 Or on claude.ai, where your plant syncs across devices: https://claude.ai/artifact/8Hgv9WXDpyV6MGWf5tQRBd
 
