@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Verse Garden</title>
+<title>Sunprint</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a cyanotype print on the left, field notes and specimen label on the right, the pressed herbarium below */
+/* Layout: the cyanotype print on the left, this morning's check-in and the specimen label on the right; calendar, how-it-works and schedule below */
 :root{
   --paper:#143f74;
   --paper-deep:#0a2346;
@@ -20,6 +20,7 @@
   --label:#f1f0ea;
   --label-ink:#173a66;
   --sun:#f3cf7a;
+  --miss:#e9a39a;
   --primary-hover:#ffffff;
   --shadow:rgba(0,0,0,.72);
   /* text and controls that sit on a print stay light in both themes */
@@ -32,159 +33,154 @@
 }
 /* light: the pale sheet the prints are mounted on */
 @media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]){--paper-deep:#edf1f6;--ink:#12305a;--ink-soft:rgba(18,48,90,.72);--ink-faint:rgba(18,48,90,.16);--label:#fbfaf4;--sun:#9c6f0c;--primary-hover:#0a2346;--shadow:rgba(20,40,80,.3);color-scheme:light}
+  :root:not([data-theme="dark"]){--paper-deep:#edf1f6;--ink:#12305a;--ink-soft:rgba(18,48,90,.72);--ink-faint:rgba(18,48,90,.16);--label:#fbfaf4;--sun:#9c6f0c;--miss:#a5463a;--primary-hover:#0a2346;--shadow:rgba(20,40,80,.3);color-scheme:light}
 }
-:root[data-theme="light"]{--paper-deep:#edf1f6;--ink:#12305a;--ink-soft:rgba(18,48,90,.72);--ink-faint:rgba(18,48,90,.16);--label:#fbfaf4;--sun:#9c6f0c;--primary-hover:#0a2346;--shadow:rgba(20,40,80,.3);color-scheme:light}
-.head-side{display:grid;gap:12px;justify-items:start;max-width:44ch}
+:root[data-theme="light"]{--paper-deep:#edf1f6;--ink:#12305a;--ink-soft:rgba(18,48,90,.72);--ink-faint:rgba(18,48,90,.16);--label:#fbfaf4;--sun:#9c6f0c;--miss:#a5463a;--primary-hover:#0a2346;--shadow:rgba(20,40,80,.3);color-scheme:light}
+
+html{background:var(--paper-deep)}
+body{background:var(--paper-deep);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:grid;gap:44px}
+[hidden]{display:none!important}
+.q-in,.m-in,.times input{box-sizing:border-box}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 32px;border-bottom:1px solid var(--ink-faint);padding-bottom:18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6vw,58px);line-height:1;margin:0;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--ink-soft)}
+h2{font-family:var(--display);font-weight:400;font-size:24px;margin:0;text-wrap:balance}
+.head-side{display:grid;gap:12px;justify-items:start;max-width:46ch}
+.lede{margin:0;color:var(--ink-soft);text-wrap:pretty}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
 .theme-switch{display:inline-flex;gap:2px;padding:2px;border:1px solid var(--ink-faint);border-radius:3px}
 .theme-switch button{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;background:none;border:0;color:var(--ink-soft);padding:7px 10px;border-radius:2px;cursor:pointer}
 .theme-switch button:hover{color:var(--ink)}
 .theme-switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper-deep)}
-.theme-switch button:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
-html{background:var(--paper-deep)}
-body{background:var(--paper-deep);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
-.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px;display:grid;gap:40px}
-header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 32px;border-bottom:1px solid var(--ink-faint);padding-bottom:18px}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6vw,58px);line-height:1;margin:0;letter-spacing:-.01em}
-h1 em{font-style:italic;color:var(--ink-soft)}
-.lede{margin:0;max-width:44ch;color:var(--ink-soft);text-wrap:pretty}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
 
-.studio{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:start}
+.studio{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start}
 @media (max-width:880px){.studio{grid-template-columns:minmax(0,1fr)}}
-
 .plate{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--paper);box-shadow:0 0 0 1px var(--ink-faint),0 40px 70px -40px var(--shadow)}
 .plate canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.plate-controls{position:absolute;right:12px;bottom:10px;display:flex;gap:6px}
-.wind{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--print-ink-soft);background:rgba(10,35,70,.55);border:1px solid rgba(234,242,251,.22);border-radius:3px;padding:6px 9px;cursor:pointer}
-.wind:hover{color:var(--print-ink)}
-.wind[aria-pressed="true"]{color:var(--print-ink);border-color:var(--print-ink-soft)}
-.share-field{resize:none;line-height:1.5;font-family:var(--mono);font-size:12px;color:var(--ink);background:rgba(234,242,251,.06);border:1px solid var(--ink-faint);border-radius:3px;padding:8px 10px;width:100%}
 .plate-meta{position:absolute;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--print-ink-soft);pointer-events:none;font-variant-numeric:tabular-nums}
+.plate-controls{position:absolute;right:12px;bottom:10px;display:flex;gap:6px}
+.pbtn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--print-ink-soft);background:rgba(10,35,70,.55);border:1px solid rgba(234,242,251,.22);border-radius:3px;padding:6px 9px;cursor:pointer}
+.pbtn:hover{color:var(--print-ink)}
+.pbtn[aria-pressed="true"]{color:var(--print-ink);border-color:var(--print-ink-soft)}
 
-.notes{display:grid;gap:28px;min-width:0}
-.field{display:grid;gap:10px}
-.field label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-#verse{font-family:var(--display);font-style:italic;font-size:24px;line-height:1.3;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink-soft);padding:6px 0 10px;resize:none;width:100%;outline:none}
-#verse:focus-visible{border-bottom-color:var(--sun)}
-#verse::placeholder{color:var(--ink-faint)}
-.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{font:500 14px/1 var(--body);padding:11px 16px;border-radius:3px;border:1px solid var(--ink-faint);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s}
+.notes{display:grid;gap:24px;min-width:0}
+.btn{font:500 14px/1 var(--body);padding:11px 16px;border-radius:3px;border:1px solid var(--ink-faint);background:transparent;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s;display:inline-flex;align-items:center;justify-content:center}
 .btn:hover{border-color:var(--ink-soft)}
 .btn.primary{background:var(--ink);color:var(--paper-deep);border-color:var(--ink)}
 .btn.primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
-.btn:focus-visible,.wind:focus-visible,.try button:focus-visible,.spec:focus-visible,.spec-del:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
-.hint{font-size:13px;color:var(--ink-soft);min-height:1.2em;margin:0}
+.btn.danger{color:var(--miss);border-color:var(--miss)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn:focus-visible,.pbtn:focus-visible,.theme-switch button:focus-visible,.tab:focus-visible,.day:focus-visible,input:focus-visible,textarea:focus-visible,label.btn:focus-within,summary:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
 
-.try{display:grid;gap:6px}
-.try ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.try button{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink-soft);background:none;border:0;padding:3px 0;cursor:pointer;text-align:left}
-.try button:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--ink-faint);text-underline-offset:4px}
+/* this morning */
+.card{border:1px solid var(--ink-faint);padding:18px 20px;display:grid;gap:12px;min-width:0}
+.t-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.win{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink);border:1px solid var(--ink-faint);border-radius:3px;padding:4px 8px;font-variant-numeric:tabular-nums}
+.t-status{font-family:var(--display);font-size:30px;line-height:1.1;margin:0;text-wrap:balance}
+.t-status .count{font-variant-numeric:tabular-nums}
+.t-sub{margin:0;color:var(--ink-soft);text-wrap:pretty}
+.stamp{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);border:2px solid var(--sun);padding:3px 8px;transform:rotate(-4deg);justify-self:start}
+.stamp.miss{color:var(--miss);border-color:var(--miss)}
+.practice-note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sun);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.practice-note button{font:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;color:var(--ink-soft);cursor:pointer;padding:4px}
+.tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--ink-faint)}
+.tab{font:500 14px/1 var(--body);min-width:72px;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-soft);padding:10px 12px 9px;cursor:pointer;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--sun)}
+.c-panel{display:grid;gap:10px;padding-top:4px}
+.q-text{margin:0;font-family:var(--display);font-style:italic;font-size:21px;line-height:1.35;text-wrap:pretty}
+.q-by{font-size:13px;color:var(--ink-soft);margin-top:-4px}
+.q-in{font:400 16px/1.5 var(--body);color:var(--ink);background:transparent;border:1px solid var(--ink-faint);border-radius:3px;padding:10px 12px;resize:vertical;width:100%}
+.meter{height:3px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
+.meter span{display:block;height:100%;width:0;background:var(--sun);transition:width .15s}
+.q-info{margin:0;font-size:13.5px;color:var(--ink-soft)}
+.p-prev{max-width:100%;max-height:180px;border-radius:2px;justify-self:start;box-shadow:0 0 0 1px var(--ink-faint)}
+.m-q{font-family:var(--mono);font-size:28px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.m-row{display:flex;gap:10px;flex-wrap:wrap}
+.m-in{font:500 18px/1 var(--mono);color:var(--ink);background:transparent;border:1px solid var(--ink-faint);border-radius:3px;padding:10px 12px;width:9ch;font-variant-numeric:tabular-nums}
 
-/* specimen label, pasted onto the sheet */
-.label{background:var(--label);color:var(--label-ink);padding:18px 20px 16px;box-shadow:inset 0 0 0 5px var(--label),inset 0 0 0 6px rgba(23,58,102,.35),0 0 0 1px rgba(23,58,102,.08),0 14px 30px -18px var(--shadow);transform:rotate(-.6deg);display:grid;gap:10px}
+/* setup + schedule form */
+.sched{display:grid;gap:14px}
+.times{display:flex;flex-wrap:wrap;gap:12px}
+.times label{display:grid;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.times input{font:500 18px/1 var(--mono);color:var(--ink);background:transparent;border:1px solid var(--ink-faint);border-radius:3px;padding:9px 10px;min-width:9.5ch}
+.days{display:flex;flex-wrap:wrap;gap:6px}
+.day{font:500 12px/1 var(--mono);letter-spacing:.06em;width:44px;padding:10px 0;border-radius:3px;border:1px solid var(--ink-faint);background:none;color:var(--ink-soft);cursor:pointer}
+.day[aria-pressed="true"]{background:var(--ink);color:var(--paper-deep);border-color:var(--ink)}
+.err{margin:0;font-size:13.5px;color:var(--miss);min-height:1.2em}
+.err:empty{display:none}
+
+/* numbers */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border-top:1px solid var(--ink-faint);border-bottom:1px solid var(--ink-faint);padding-block:14px}
+.stats div{display:grid;gap:2px;min-width:0}
+.stats dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.stats dd{margin:0;font-family:var(--body);font-weight:500;font-size:28px;line-height:1;font-variant-numeric:tabular-nums lining-nums}
+.stats dd small{font-family:var(--body);font-size:13px;color:var(--ink-soft);margin-left:3px}
+@media (max-width:420px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* specimen label, pasted onto the sheet: fixed card colours in both themes */
+.label{background:var(--label);color:var(--label-ink);padding:18px 20px 16px;box-shadow:inset 0 0 0 5px var(--label),inset 0 0 0 6px rgba(23,58,102,.35),0 0 0 1px rgba(23,58,102,.08),0 14px 30px -18px var(--shadow);transform:rotate(-.6deg);display:grid;gap:9px}
 .label-top{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-variant-numeric:tabular-nums}
-.binomial{font-family:var(--display);font-style:italic;font-size:28px;line-height:1.1;text-wrap:balance;overflow-wrap:anywhere}
-.verse-line{margin:0;font-size:14px;line-height:1.45;color:rgba(23,58,102,.85);overflow-wrap:anywhere}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0;border-top:1px solid rgba(23,58,102,.25);padding-top:10px}
-.stats div{display:grid;gap:2px}
-.stats dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
-.stats dd{margin:0;font-family:var(--mono);font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+.binomial{font-family:var(--display);font-style:italic;font-size:27px;line-height:1.1;overflow-wrap:anywhere}
+.label-line{margin:0;font-size:14px;color:rgba(23,58,102,.85)}
+.label .lstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0;border-top:1px solid rgba(23,58,102,.25);padding-top:10px}
+.label .lstats div{display:grid;gap:2px}
+.label .lstats dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.label .lstats dd{margin:0;font-family:var(--mono);font-size:16px;font-weight:500;font-variant-numeric:tabular-nums}
 .label-foot{font-size:12px;opacity:.8}
 
-.garden{display:grid;gap:14px}
-.plant-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
-.plant-preview{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink-soft);min-width:0;overflow-wrap:anywhere}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.bed-wrap{overflow-x:auto;overflow-y:hidden;box-shadow:0 0 0 1px var(--ink-faint);background:var(--paper);overscroll-behavior-x:contain}
-.bed-spacer{height:340px;position:relative}
-.bed-spacer canvas{position:sticky;left:0;display:block;cursor:pointer}
-.g-list summary{cursor:pointer;color:var(--ink-soft);font-size:14px}
-.g-list ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:2px}
-.g-list li{display:flex;align-items:baseline;gap:6px 12px;flex-wrap:wrap;border-bottom:1px solid var(--ink-faint);padding:8px 0}
-.g-line{font-family:var(--display);font-style:italic;font-size:17px;background:none;border:0;color:var(--ink);cursor:pointer;padding:0;text-align:left;min-width:0;overflow-wrap:anywhere}
-.g-line:hover{text-decoration:underline;text-decoration-color:var(--ink-faint);text-underline-offset:4px}
-.g-meta{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
-.g-del{margin-left:auto;font:500 12px/1 var(--body);background:none;border:1px solid var(--ink-faint);color:var(--ink-soft);border-radius:3px;padding:6px 9px;cursor:pointer}
-.g-del:hover{color:var(--ink);border-color:var(--ink-soft)}
-.g-line:focus-visible,.g-del:focus-visible,.g-list summary:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
-/* specimen label tags: fixed card colours, same in both themes */
-.label-tags{display:flex;flex-wrap:wrap;gap:6px}
-.label-tags:empty{display:none}
-.chip{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:2px;border:1px solid rgba(23,58,102,.4);color:var(--label-ink)}
-.chip[data-tier="Uncommon"]{background:rgba(23,58,102,.1)}
-.chip[data-tier="Rare"]{background:#173a66;color:#f1f0ea;border-color:#173a66}
-.chip[data-tier="Legendary"]{background:#a8770e;color:#fffaf0;border-color:#a8770e}
-.chip.note{border-style:dashed}
+/* calendar */
+.section-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px}
+.section-head p{margin:0;color:var(--ink-soft);font-size:13px}
+.cal-wrap{display:grid;gap:12px;max-width:440px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal .dow{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:center}
+.cell{aspect-ratio:1;max-width:100%;border-radius:3px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink-soft);position:relative}
+.cell.woke{background:var(--ink);color:var(--paper-deep);font-weight:500}
+.cell.missed{border:1px dashed var(--miss);color:var(--miss)}
+.cell.missed{text-decoration:line-through;text-decoration-thickness:1px}
+.cell.rest{color:var(--ink-faint)}
+.cell.upcoming,.cell.open{border:1px solid var(--ink-soft);color:var(--ink)}
+.cell.untracked,.cell.future{color:var(--ink-soft);opacity:.45}
+.cell.today{box-shadow:0 0 0 2px var(--sun)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink-soft)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:2px;display:inline-block}
+.legend .l-woke{background:var(--ink)}
+.legend .l-missed{border:1px dashed var(--miss)}
+.legend .l-rest{border:1px solid var(--ink-faint)}
 
-/* commission */
-.commission{border:1px solid var(--ink-faint);padding:16px 18px;display:grid;gap:10px}
-.c-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.stamp{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);border:2px solid var(--sun);padding:3px 8px;transform:rotate(-4deg)}
-.stamp.fail{color:var(--ink-soft);border-color:var(--ink-soft)}
-.c-brief{margin:0;font-family:var(--display);font-style:italic;font-size:18px;line-height:1.3}
-.c-reqs{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.c-reqs li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;align-items:baseline;font-size:14.5px}
-.c-mark{font-family:var(--mono);font-size:13px;text-align:center;color:var(--ink-soft)}
-.c-reqs li[data-state="met"] .c-mark{color:var(--sun);font-weight:500}
-.c-reqs li[data-state="miss"]{color:var(--ink-soft)}
-.c-pips{display:flex;gap:8px;align-items:center;min-height:14px}
-.c-pip{width:11px;height:11px;border-radius:50% 0 50% 50%;transform:rotate(-45deg);border:1px solid var(--ink-soft)}
-.c-pip.used{background:var(--ink-soft);border-color:transparent}
-.c-pip.win{background:var(--sun);border-color:transparent}
-.c-msg{margin:0;font-size:13.5px;color:var(--ink-soft);overflow-wrap:anywhere}
-.c-msg:empty{display:none}
-.c-msg b{color:var(--ink);font-weight:500}
+/* how it works */
+.how{display:grid;gap:18px}
+.how ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;max-width:72ch}
+.how li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;color:var(--ink-soft);font-size:14.5px}
+.how li b{color:var(--ink);font-weight:500}
+.how .glyph{font-family:var(--mono);color:var(--ink);font-size:12px;padding-top:2px}
+.demos{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px}
+.demo{display:grid;gap:8px;margin:0}
+.demo canvas{width:100%;aspect-ratio:4/5;max-width:100%;display:block;box-shadow:0 0 0 1px var(--ink-faint)}
+.demo figcaption{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.demo figcaption b{display:block;font-family:var(--display);font-weight:400;font-size:17px;color:var(--ink)}
 
-/* field journal */
-.journal{display:grid;gap:14px}
-.j-bar{height:3px;background:var(--ink-faint);border-radius:2px;overflow:hidden}
-.j-bar span{display:block;height:100%;width:0;background:var(--sun);transition:width .4s}
-.j-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.j-tile{border:1px dashed var(--ink-faint);padding:12px 14px;display:grid;gap:4px;align-content:start;min-width:0}
-.j-tile.found{border-style:solid;border-color:var(--ink-soft)}
-.j-name{font-family:var(--display);font-size:19px;line-height:1.2}
-.j-tile:not(.found) .j-name{color:var(--ink-soft)}
-.j-hint{font-size:13px;color:var(--ink-soft);line-height:1.45}
-.j-meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.j-meta .t-rare{color:var(--sun)}
-@media (prefers-reduced-motion:reduce){.j-bar span{transition:none}}
-.key h2,.herb h2,.garden h2,.journal h2{font-family:var(--display);font-weight:400;font-size:24px;margin:0}
-.key{display:grid;gap:12px}
-.key ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.key li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;color:var(--ink-soft);font-size:14px}
-.key li b{color:var(--ink);font-weight:500}
-.key .glyph{font-family:var(--mono);color:var(--ink);font-size:12px;padding-top:2px}
-.leafrow{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:4px}
-.leafrow span{display:flex;align-items:center;gap:2px;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
-.leafrow canvas{width:30px;height:30px;background:var(--paper);border-radius:2px}
+/* schedule */
+.settings{display:grid;gap:14px;max-width:620px}
+.sync{font-size:13px;color:var(--ink-soft);margin:0}
+.reset{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13.5px;color:var(--ink-soft)}
 
-.herb{display:grid;gap:16px}
-.herb-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px}
-.herb-head p{margin:0;color:var(--ink-soft);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
-.spec-wrap{position:relative;min-width:0}
-.spec{display:grid;gap:8px;width:100%;background:none;border:0;padding:0;color:var(--ink);text-align:left;cursor:pointer}
-.spec canvas{width:100%;aspect-ratio:4/5;max-width:100%;display:block;box-shadow:0 0 0 1px var(--ink-faint);transition:box-shadow .15s}
-.spec:hover canvas{box-shadow:0 0 0 1px var(--ink-soft)}
-.spec-name{font-family:var(--display);font-style:italic;font-size:16px;line-height:1.2;overflow-wrap:anywhere}
-.spec-date{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-soft)}
-.spec-del{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(10,35,70,.7);color:var(--print-ink);font-size:15px;line-height:1;cursor:pointer;opacity:.75}
-.spec-del:hover{opacity:1}
-.empty{color:var(--ink-soft);border:1px dashed var(--ink-faint);padding:22px;margin:0}
-
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper-deep);font-weight:500;font-size:14px;padding:10px 16px;border-radius:3px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper-deep);font-weight:500;font-size:14px;padding:10px 16px;border-radius:3px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){.toast,.btn,.spec canvas{transition:none}}
+@media (prefers-reduced-motion:reduce){.toast,.btn,.meter span{transition:none}}
 </style>
 
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Verse <em>Garden</em></h1>
+    <h1>Sun<em>print</em></h1>
     <div class="head-side">
-      <p class="lede">Type a line and it grows into a plant. The same words always grow the same plant, printed here as a cyanotype. Take on today's commission and fill your field journal.</p>
+      <p class="lede">Pick a wake-up window. Every morning you prove you're up in time, your plant grows. Miss a morning and it starts to drop its leaves.</p>
       <div class="theme-switch" role="group" aria-label="Theme" id="themeSwitch">
         <button type="button" data-choice="auto" aria-pressed="true">Auto</button>
         <button type="button" data-choice="light" aria-pressed="false">Light</button>
@@ -195,104 +191,79 @@ h1 em{font-style:italic;color:var(--ink-soft)}
 
   <section class="studio">
     <div class="plate" id="plate">
-      <canvas id="sheet" role="img" aria-label="A plant grown from your line"></canvas>
-      <div class="plate-meta"><span id="plateNo">VG · No. 0000</span><span id="exposure">exposure 0.0 s</span></div>
+      <canvas id="sheet" role="img" aria-label="Your plant"></canvas>
+      <div class="plate-meta"><span id="plateNo">SP · Seed</span><span id="exposure">exposure 0.0 s</span></div>
       <div class="plate-controls">
-        <button class="wind" id="soundBtn" type="button" aria-pressed="false">Sound off</button>
-        <button class="wind" id="windBtn" type="button" aria-pressed="false">Wind off</button>
+        <button class="pbtn" id="soundBtn" type="button" aria-pressed="false">Sound off</button>
+        <button class="pbtn" id="windBtn" type="button" aria-pressed="false">Wind off</button>
       </div>
     </div>
 
     <div class="notes">
-      <form class="field" id="form" autocomplete="off">
-        <label for="verse">Your line</label>
-        <textarea id="verse" rows="2" maxlength="180" placeholder="Write anything…">The quiet things grow fastest when no one is watching.</textarea>
-        <div class="actions">
-          <button class="btn primary" type="submit" id="growBtn">Grow</button>
-          <button class="btn" type="button" id="replayBtn">Replay</button>
-          <button class="btn" type="button" id="pressBtn">Press into herbarium</button>
-          <button class="btn" type="button" id="shareBtn">Copy link</button>
-        </div>
-        <p class="hint" id="hint">Press Enter to grow.</p>
-        <textarea id="shareField" class="share-field" rows="1" readonly hidden aria-label="Text to copy"></textarea>
-      </form>
-
-      <section class="commission" id="commission" aria-labelledby="cTitle">
-        <div class="c-head">
-          <span class="eyebrow" id="cTitle">Daily commission</span>
-          <span class="stamp" id="cStamp" hidden>Fulfilled</span>
-        </div>
-        <p class="c-brief">The Herbarium Society requests a specimen that:</p>
-        <ul class="c-reqs" id="cReqs"></ul>
-        <div class="c-pips" id="cPips" role="img" aria-label="Growths used"></div>
-        <p class="c-msg" id="cMsg" aria-live="polite"></p>
-        <div class="actions" id="cActions"></div>
+      <section class="card" id="setup" hidden aria-labelledby="setupTitle">
+        <span class="eyebrow">Plant your seed</span>
+        <h2 class="t-status" id="setupTitle">When do you want to be up?</h2>
+        <p class="t-sub">Choose a window. Each morning, check in here between these times and prove you're awake. Set your phone's alarm too: this page can't ring.</p>
+        <div id="setupForm"></div>
       </section>
 
-      <div class="label" aria-live="polite">
-        <div class="label-top"><span>Verse Garden Herbarium</span><span id="tagNo">No. 0000</span></div>
-        <div class="binomial" id="binomial">—</div>
-        <div class="label-tags" id="labelTags"></div>
-        <p class="verse-line" id="tagVerse"></p>
-        <dl class="stats">
-          <div><dt>Height</dt><dd id="sHeight">0</dd></div>
-          <div><dt>Nodes</dt><dd id="sNodes">0</dd></div>
-          <div><dt>Leaves</dt><dd id="sLeaves">0</dd></div>
-          <div><dt>Flowers</dt><dd id="sFlowers">0</dd></div>
+      <section class="card" id="today" hidden aria-live="polite">
+        <div class="t-head"><span class="eyebrow" id="tDate"></span><span class="win" id="tWin"></span></div>
+        <h2 class="t-status" id="tStatus"></h2>
+        <p class="t-sub" id="tSub"></p>
+        <div id="tBody" class="c-panel"></div>
+      </section>
+
+      <dl class="stats" id="stats">
+        <div><dt>Streak</dt><dd id="sStreak">0</dd></div>
+        <div><dt>Best</dt><dd id="sBest">0</dd></div>
+        <div><dt>Mornings</dt><dd id="sWoke">0</dd></div>
+        <div><dt>On time</dt><dd id="sRate">–</dd></div>
+      </dl>
+
+      <div class="label">
+        <div class="label-top"><span>Sunprint Herbarium</span><span id="lDay">Day 0</span></div>
+        <div class="binomial" id="lName">Unnamed seedling</div>
+        <p class="label-line" id="lLine">Not planted yet.</p>
+        <dl class="lstats">
+          <div><dt>Height</dt><dd id="lHeight">0 cm</dd></div>
+          <div><dt>Nodes</dt><dd id="lNodes">0</dd></div>
+          <div><dt>Leaves</dt><dd id="lLeaves">0</dd></div>
+          <div><dt>Flowers</dt><dd id="lFlowers">0</dd></div>
         </dl>
-        <div class="label-foot">Collected <span id="tagDate"></span> · det. Verse Garden</div>
-      </div>
-
-      <div class="try">
-        <span class="eyebrow">Try a line</span>
-        <ul id="tryList"></ul>
+        <div class="label-foot" id="lFoot">Each morning you're up on time adds a node.</div>
       </div>
     </div>
   </section>
 
-  <section class="garden" aria-labelledby="gardenTitle">
-    <div class="herb-head">
-      <h2 id="gardenTitle">Shared garden</h2>
-      <p id="gStatus">Opening the garden…</p>
+  <section class="cal-wrap" aria-labelledby="calTitle">
+    <div class="section-head"><h2 id="calTitle">Last five weeks</h2></div>
+    <div class="cal" id="cal"></div>
+    <div class="legend">
+      <span><i class="l-woke"></i>Up on time</span>
+      <span><i class="l-missed"></i>Missed</span>
+      <span><i class="l-rest"></i>Rest day or not tracked</span>
     </div>
-    <div class="plant-bar">
-      <button class="btn primary" type="button" id="plantBtn" disabled>Plant this line</button>
-      <span class="plant-preview" id="plantPreview"></span>
-    </div>
-    <p class="hint" id="gHint">Everyone who opens this page shares one garden. You can keep up to five plants in it. Tap a plant to see it up close.</p>
-    <div class="bed-wrap" id="bedWrap"><div class="bed-spacer" id="bedSpacer"><canvas id="bed" aria-hidden="true"></canvas></div></div>
-    <details class="g-list"><summary>Every line in the garden (<span id="gCount">0</span>)</summary><ul id="gList"></ul></details>
   </section>
 
-  <section class="journal" aria-labelledby="journalTitle">
-    <div class="herb-head">
-      <h2 id="journalTitle">Field journal</h2>
-      <p id="jCount">0 of 18 found</p>
-    </div>
-    <div class="j-bar" aria-hidden="true"><span id="jBar"></span></div>
-    <div class="j-grid" id="jGrid"></div>
-  </section>
-
-  <section class="key">
-    <h2>How words become a plant</h2>
+  <section class="how" aria-labelledby="howTitle">
+    <h2 id="howTitle">How your plant grows</h2>
     <ul>
-      <li><span class="glyph">|</span><span><b>Every word adds a node</b> to the stem and sends out a side branch. Longer words grow longer.</span></li>
-      <li><span class="glyph">a</span><span><b>Every vowel becomes a leaf</b>, and the vowel sets the leaf's shape. Capitalised words grow broader leaves.
-        <span class="leafrow" id="leafRow"></span></span></li>
-      <li><span class="glyph">.</span><span><b>A word ending in . or ! flowers.</b> An exclamation mark gives a double flower. A ? curls into a tendril, and , ; : set a bud.</span></li>
-      <li><span class="glyph">7</span><span><b>Numbers ripen into berries.</b></span></li>
-      <li><span class="glyph">↓</span><span><b>Every sentence adds a root.</b> A line that ends without punctuation keeps its top bud closed.</span></li>
-      <li><span class="glyph">♪</span><span><b>Turn on sound to hear it grow.</b> Each word plucks a low note, each leaf chimes on its vowel's pitch, and flowers ring a chord. The key comes from the whole line.</span></li>
+      <li><span class="glyph">◷</span><span><b>Check in during your window</b> on the days you choose. Days you leave out are rest days and don't count either way.</span></li>
+      <li><span class="glyph">✓</span><span><b>Prove you're up</b> by typing out a quote, taking a fresh photo, or solving a sum in your head.</span></li>
+      <li><span class="glyph">|</span><span><b>Every morning you make it adds a node</b> to the stem, with leaves from a morning word. Three in a row set a bud, and seven in a row flower.</span></li>
+      <li><span class="glyph">↓</span><span><b>Miss a window and your plant sheds</b> about a fifth of its leaves, and the stem curls a tendril where the streak broke. Every morning you're back grows some leaves again.</span></li>
+      <li><span class="glyph">✱</span><span><b>It's fully grown at 40 mornings.</b> After that, keep it in leaf.</span></li>
     </ul>
+    <div class="demos" id="demos"></div>
   </section>
 
-  <section class="herb">
-    <div class="herb-head">
-      <h2>Herbarium</h2>
-      <p>Specimens you pressed. They're saved in this browser only.</p>
-    </div>
-    <div class="grid" id="herbGrid"></div>
-    <p class="empty" id="herbEmpty" hidden>Nothing pressed yet. Grow a line, then press it to keep it here.</p>
+  <section class="settings" id="settings" hidden aria-labelledby="schedTitle">
+    <h2 id="schedTitle">Your schedule</h2>
+    <p class="t-sub" id="schedNow"></p>
+    <div id="editForm"></div>
+    <p class="sync" id="sync"></p>
+    <div class="reset" id="reset"></div>
   </section>
 </div>
 <div class="toast" id="toast" role="status"></div>
@@ -668,6 +639,7 @@ function flutter(op) {
   const h = Math.min(1, Math.max(0, -op.y / WIND.H));
   return (.1 * Math.sin(WIND.t * 3.3 + op.x * .21 + op.y * .13) + WIND.base * .12) * (.4 + h);
 }
+let FALL_T = Infinity;
 const DRAW = {
   seg(ctx, op, p) {
     ctx.strokeStyle = op.faint ? FAINT : INK; ctx.lineWidth = op.w;
@@ -677,7 +649,16 @@ const DRAW = {
   },
   leaf(ctx, op, p) {
     const e = ease(p);
-    ctx.save(); ctx.translate(op.x + off(op.y), op.y); ctx.rotate(op.a + flutter(op)); ctx.scale(e, e);
+    let x = op.x + off(op.y), y = op.y, a = op.a + flutter(op), alpha = 1;
+    // a shed leaf drifts from its branch to the soil, then lies there
+    if (op.fall && FALL_T > op.fall.t0) {
+      const q = Math.min(1, (FALL_T - op.fall.t0) / (op.fall.t1 - op.fall.t0)), qe = q * q * (3 - 2 * q);
+      x = x + (op.fall.x - x) * qe + Math.sin(q * 9 + op.fall.a) * 6 * (1 - q);
+      y = op.y + (op.fall.y - op.y) * q * q;
+      a = a + (op.fall.a - a) * qe + Math.sin(q * 7) * .6 * (1 - q);
+      alpha = 1 - .45 * q;
+    }
+    ctx.save(); if (alpha < 1) ctx.globalAlpha = alpha; ctx.translate(x, y); ctx.rotate(a); ctx.scale(e, e);
     const pet = op.L * .18;
     ctx.strokeStyle = INK; ctx.lineWidth = .9;
     ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(pet, 0); ctx.stroke();
@@ -770,6 +751,7 @@ function drawPlantAt(ctx, pl, x0, y0, W, H, T, o, groundY) {
     const t = o.wind.t, Hgt = Math.max(40, -pl.top);
     WIND = { t, H: Hgt, A: Hgt * .045, base: windBase(t) };
   }
+  FALL_T = T;
   for (const op of pl.ops) {
     const p = (T - op.t0) / (op.t1 - op.t0);
     if (p <= 0) continue;
@@ -825,33 +807,197 @@ function makePaper(W, H, dpr, seed, tone = 'blue') {
   return c;
 }
 
-/* ---------- main plate ---------- */
+/* ======================= Sunprint ======================= */
 const $ = id => document.getElementById(id);
-const plateEl = $('plate'), sheet = $('sheet'), sctx = sheet.getContext('2d');
-let W = 0, H = 0, dpr = 1, paper = null, plant = null, start = 0, raf = 0, T = Infinity;
-let papers = {};
-function platePaper(tone) { return papers[tone] || (papers[tone] = makePaper(W, H, dpr, 7, tone)); }
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === false || v == null) continue;
+    if (k === 'class') n.className = v; else n.setAttribute(k, v === true ? '' : v);
+  }
+  for (const c of kids) if (c != null) n.append(c);
+  return n;
+}
+const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
+/* morning words the stem grows from, and quotes to type out (all public domain) */
+const BANK = ['dawn', 'lark', 'dew', 'sunrise', 'kettle', 'birdsong', 'light', 'early', 'rise', 'shine', 'window', 'coffee', 'porridge', 'horizon', 'awake', 'stretch', 'daybreak', 'robin', 'meadow', 'glow', 'toast', 'curtain', 'morning', 'blue', 'fresh', 'sparrow', 'open', 'golden', 'quiet', 'dewdrop', 'breeze', 'yawn', 'linen', 'orange', 'bloom', 'cockerel', 'aurora', 'chorus', 'rooftop', 'oatmeal', 'thrush', 'misty', 'sunbeam', 'pillow', 'slipper', 'garden', 'teapot', 'wren'];
+const QUOTES = [
+  ['Early to bed and early to rise, makes a man healthy, wealthy and wise.', 'Benjamin Franklin'],
+  ['Only that day dawns to which we are awake.', 'Henry David Thoreau'],
+  ['Morning is when I am awake and there is a dawn in me.', 'Henry David Thoreau'],
+  ['Every morning was a cheerful invitation to make my life of equal simplicity.', 'Henry David Thoreau'],
+  ['The sun is but a morning star.', 'Henry David Thoreau'],
+  ['Write it on your heart that every day is the best day in the year.', 'Ralph Waldo Emerson'],
+  ['I will tell you how the sun rose, a ribbon at a time.', 'Emily Dickinson'],
+  ['Hope is the thing with feathers that perches in the soul.', 'Emily Dickinson'],
+  ['Night’s candles are burnt out, and jocund day stands tiptoe on the misty mountain tops.', 'William Shakespeare'],
+  ['Up! up! my Friend, and quit your books.', 'William Wordsworth'],
+  ['Awake, my soul, and with the sun thy daily stage of duty run.', 'Thomas Ken'],
+  ['In winter I get up at night and dress by yellow candle-light.', 'Robert Louis Stevenson'],
+  ['The world is so full of a number of things, I am sure we should all be as happy as kings.', 'Robert Louis Stevenson'],
+  ['Lose an hour in the morning, and you will be all day hunting for it.', 'Richard Whately'],
+  ['Weeping may endure for a night, but joy cometh in the morning.', 'Psalm 30'],
+  ['To me every hour of the light and dark is a miracle.', 'Walt Whitman']
+];
+
+/* ---------- dates: everything is in the viewer's local time ---------- */
+const pad = n => String(n).padStart(2, '0');
+const keyOf = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const dateOf = k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d); };
+const addDays = (k, n) => { const d = dateOf(k); d.setDate(d.getDate() + n); return keyOf(d); };
+const at = (k, hhmm) => { const [h, m] = hhmm.split(':').map(Number); const d = dateOf(k); d.setHours(h, m, 0, 0); return d.getTime(); };
+const fmtTime = ms => new Date(ms).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+const fmtHHMM = hhmm => fmtTime(at(keyOf(new Date()), hhmm));
+const fmtDayLong = k => dateOf(k).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+const fmtDayShort = k => dateOf(k).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+function fmtSpan(ms) {
+  const m = Math.max(1, Math.ceil(ms / 60000)), h = Math.floor(m / 60), r = m % 60;
+  return h ? (r ? `${h} h ${r} min` : `${h} h`) : `${r} min`;
+}
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+function fmtDays(days) {
+  const s = [...days].sort((a, b) => a - b).join(',');
+  if (s === '0,1,2,3,4,5,6') return 'every day';
+  if (s === '1,2,3,4,5') return 'Monday to Friday';
+  if (s === '0,6') return 'weekends';
+  return [1, 2, 3, 4, 5, 6, 0].filter(d => days.includes(d)).map(d => DOW[d]).join(', ');
+}
+
+/* ---------- state: {seed, schedules:[{since,start,end,days}], log:{date:{at,proof}}, seenLoss} ---------- */
+const LS_KEY = 'sunprint:v1';
+let S = null;
+const clone = o => JSON.parse(JSON.stringify(o));
+const HHMM = /^([01]\d|2[0-3]):[0-5]\d$/;
+function sanitize(s) {
+  if (!s || typeof s !== 'object' || !Number.isFinite(s.seed) || !Array.isArray(s.schedules)) return null;
+  const schedules = s.schedules.filter(x => x && Number.isFinite(x.since) && HHMM.test(x.start) && HHMM.test(x.end) && x.end > x.start && Array.isArray(x.days))
+    .map(x => ({ since: x.since, start: x.start, end: x.end, days: x.days.filter(d => Number.isInteger(d) && d >= 0 && d <= 6) }))
+    .sort((a, b) => a.since - b.since);
+  if (!schedules.length) return null;
+  const log = {};
+  if (s.log && typeof s.log === 'object') for (const [k, v] of Object.entries(s.log)) if (/^\d{4}-\d\d-\d\d$/.test(k) && v && Number.isFinite(v.at)) log[k] = { at: v.at, proof: ['quote', 'photo', 'math'].includes(v.proof) ? v.proof : 'quote' };
+  return { v: 1, seed: s.seed >>> 0, schedules, log, seenLoss: Number.isFinite(s.seenLoss) ? s.seenLoss : 0, pref: ['quote', 'photo', 'math'].includes(s.pref) ? s.pref : 'quote' };
+}
+function loadLocal() { try { return sanitize(JSON.parse(localStorage.getItem(LS_KEY) || 'null')); } catch (e) { return null; } }
+function saveLocal() { try { if (S) localStorage.setItem(LS_KEY, JSON.stringify(S)); else localStorage.removeItem(LS_KEY); } catch (e) { /* storage unavailable */ } }
+let syncMode = 'local', cloudRef = null, writeChain = Promise.resolve();
+function persist() {
+  saveLocal();
+  if (syncMode !== 'cloud' || !cloudRef) return;
+  const body = S ? clone(S) : null;
+  // one write at a time to the one document
+  writeChain = writeChain.then(() => body ? cloudRef.set(body) : cloudRef.delete()).catch(e => {
+    if (e && e.code === 'invalid_argument') { syncMode = 'local'; renderSync(); }
+  });
+}
+
+/* ---------- what happened on each day ---------- */
+// the schedule in force on a day is the newest one saved before that day's window opened
+function schedFor(k) {
+  for (let i = S.schedules.length - 1; i >= 0; i--) { const sc = S.schedules[i]; if (sc.since <= at(k, sc.start)) return sc; }
+  return null;
+}
+function status(k, now = Date.now()) {
+  const sc = schedFor(k);
+  if (!sc) return { s: 'untracked' };
+  if (!sc.days.includes(dateOf(k).getDay())) return { s: 'rest', sc };
+  const e = S.log[k];
+  if (e) return { s: 'woke', sc, e };
+  const a = at(k, sc.start), b = at(k, sc.end);
+  if (now < a) return { s: 'upcoming', sc, a, b };
+  if (now <= b) return { s: 'open', sc, a, b };
+  return { s: 'missed', sc, a, b };
+}
+function history(now = Date.now()) {
+  const out = [], today = keyOf(new Date(now));
+  let k = keyOf(new Date(S.schedules[0].since)), guard = 0;
+  while (k <= today && guard++ < 1200) { out.push({ k, ...status(k, now) }); k = addDays(k, 1); }
+  return out;
+}
+function evaluate(hist) {
+  let loss = 0, streak = 0, best = 0, woke = 0, missed = 0;
+  const succ = [];
+  for (const h of hist) {
+    if (h.s === 'woke') { loss = Math.max(0, loss - .12); streak++; best = Math.max(best, streak); woke++; succ.push({ k: h.k, streak }); }
+    else if (h.s === 'missed') { loss = Math.min(1, loss + .22); streak = 0; missed++; if (succ.length) succ[succ.length - 1].broke = true; }
+  }
+  return { loss: Math.round(loss * 100) / 100, streak, best, woke, missed, succ };
+}
+function nextWindow(now = Date.now()) {
+  const today = keyOf(new Date(now));
+  for (let i = 0; i <= 8; i++) {
+    const k = addDays(today, i), st = status(k, now);
+    if (st.s === 'upcoming' || st.s === 'open') return { k, a: st.a };
+  }
+  return null;
+}
+function fmtNext(nw, now = Date.now()) {
+  if (!nw) return 'none in the next week';
+  const today = keyOf(new Date(now));
+  const day = nw.k === today ? 'today' : nw.k === addDays(today, 1) ? 'tomorrow' : DOW[dateOf(nw.k).getDay()];
+  return `${day} at ${fmtTime(nw.a)}`;
+}
+
+/* ---------- the plant: mornings become words, misses shed leaves ---------- */
+function plantFrom(succ, loss, seed, prevLoss = loss) {
+  const words = succ.slice(0, 40).map(x => {
+    const w = BANK[cyrb53(seed + ':' + x.k) % BANK.length];
+    return w + (x.streak % 7 === 0 ? '.' : x.broke ? '?' : x.streak % 3 === 0 ? ',' : '');
+  });
+  const pl = grow(words.join(' '));
+  pl.tone = 'blue';
+  const leaves = pl.ops.filter(o => o.k === 'leaf');
+  const total = leaves.length, shed = Math.round(loss * total), before = Math.min(shed, Math.round(prevLoss * total));
+  const r = mulberry32((seed ^ 0x9e3779b9) >>> 0);
+  const order = leaves.map((o, i) => ({ o, h: cyrb53(seed + '/' + i) })).sort((a, b) => a.h - b.h).map(x => x.o);
+  const spread = Math.max(90, pl.b.x1 - pl.b.x0);
+  let fallT = pl.end + .3;
+  order.slice(0, shed).forEach((o, i) => {
+    // land along the soil, clear of the stem: leaves to the right lie pointing right, left ones point left
+    const side = r() < .5 ? -1 : 1, fx = side * (10 + r() * spread * .45), fa = (side > 0 ? 0 : Math.PI) + (r() - .5) * .5;
+    if (i < before) { o.t0 = 0; o.t1 = .01; o.fall = { x: fx, y: -1.2, a: fa, t0: -1, t1: -.5 }; }
+    else { o.fall = { x: fx, y: -1.2, a: fa, t0: fallT, t1: fallT + 1.4 }; fallT += .18; }
+    pl.b.x0 = Math.min(pl.b.x0, fx - o.L * 1.3); pl.b.x1 = Math.max(pl.b.x1, fx + o.L * 1.3);
+  });
+  pl.end = Math.max(pl.end, shed > before ? fallT + 1.4 : 0);
+  Object.assign(pl, { leafTotal: total, leafShed: shed, newlyShed: shed - before, nodes: Math.min(40, succ.length) });
+  const ev = soundEvents(pl);
+  for (const o of leaves) if (o.fall && o.fall.t1 > 0) ev.push({ k: 'plink', t: o.fall.t1, f: 196 + (Math.round(o.L) % 5) * 22, v: .035 });
+  pl.sound = ev.sort((a, b) => a.t - b.t);
+  return pl;
+}
+function nameFor(seed) {
+  const r = mulberry32(seed >>> 0);
+  const g = latin(BANK[Math.floor(r() * BANK.length)], ['ia', 'ella', 'anthus', 'opsis', 'aria', 'ium'], r);
+  const s = latin(BANK[Math.floor(r() * BANK.length)], ['iflora', 'ifolia', 'ensis', 'oides', 'escens'], r);
+  return g[0].toUpperCase() + g.slice(1) + ' ' + s;
+}
+
+/* ---------- the plate ---------- */
+const plateEl = $('plate'), sheet = $('sheet'), sctx = sheet.getContext('2d');
+let W = 0, H = 0, dpr = 1, paper = null, plant = null, start = 0, raf = 0, T = Infinity, lastDraw = 0;
+let windOn = !reduced;
+try { const w = localStorage.getItem('sunprint:wind'); if (w !== null) windOn = w === '1'; } catch (e) { /* default */ }
+const windStart = performance.now();
 function sizePlate() {
   const rect = plateEl.getBoundingClientRect();
   if (!rect.width) return;
   dpr = Math.min(2.5, window.devicePixelRatio || 1);
   W = rect.width; H = rect.height;
   sheet.width = Math.round(W * dpr); sheet.height = Math.round(H * dpr);
-  papers = {};
-  paper = platePaper('blue');
+  paper = makePaper(W, H, dpr, 7);
   frame();
 }
-const WIND_KEY = 'verse-garden:wind';
-let windOn = !reduced;
-try { const w = localStorage.getItem(WIND_KEY); if (w !== null) windOn = w === '1'; } catch (e) { /* default */ }
-const windStart = performance.now();
-let lastDraw = 0;
-
 function frame(now = performance.now()) {
   if (!plant || !paper) return;
   sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  drawPlant(sctx, plant, W, H, T, platePaper(plant.tone), { glow: 5 * dpr, scaleBar: true, wind: windOn ? { t: (now - windStart) / 1000 } : null });
+  sctx.drawImage(paper, 0, 0, W, H);
+  const f = fit(plant, W, H), gy = Math.round(f.oy) + .5;
+  sctx.strokeStyle = 'rgba(234,242,251,.16)'; sctx.lineWidth = 1;
+  sctx.beginPath(); sctx.moveTo(f.ox + (plant.b.x0 - 14) * f.S, gy); sctx.lineTo(f.ox + (plant.b.x1 + 14) * f.S, gy); sctx.stroke();
+  drawPlantAt(sctx, plant, 0, 0, W, H, T, { glow: 5 * dpr, wind: windOn ? { t: (now - windStart) / 1000 } : null });
+  drawScaleBar(sctx, f, W, H);
   $('exposure').textContent = 'exposure ' + Math.min(T, plant.end).toFixed(1) + ' s';
   windSound((now - windStart) / 1000);
   lastDraw = now;
@@ -860,242 +1006,51 @@ function tick(now) {
   raf = 0;
   const growing = T !== Infinity;
   if (growing) { T = (now - start) / 1000; if (T >= plant.end + .05) T = Infinity; }
-  // growth draws every frame; wind alone is drawn at about 30 fps
   if (growing || now - lastDraw >= 33) frame(now);
   if (T !== Infinity || windOn) raf = requestAnimationFrame(tick);
 }
 function kick() { if (!raf) raf = requestAnimationFrame(tick); }
-function play(text, animate = true) {
-  plant = grow(text);
-  updateLabel();
-  setHash();
-  scheduleSound(plant, { main: true });
+function show(pl, animate) {
+  plant = pl;
   if (!animate || reduced) { T = Infinity; frame(); kick(); return; }
   T = 0; start = performance.now();
+  scheduleSound(plant, { main: true });
   kick();
 }
-
-const windBtn = $('windBtn');
-function syncWind() {
-  windBtn.setAttribute('aria-pressed', String(windOn));
-  windBtn.textContent = windOn ? 'Wind on' : 'Wind off';
+const windBtn = $('windBtn'), soundBtn = $('soundBtn');
+function syncToggles() {
+  windBtn.setAttribute('aria-pressed', String(windOn)); windBtn.textContent = windOn ? 'Wind on' : 'Wind off';
+  soundBtn.setAttribute('aria-pressed', String(soundOn)); soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
 }
 windBtn.addEventListener('click', () => {
   windOn = !windOn;
-  try { localStorage.setItem(WIND_KEY, windOn ? '1' : '0'); } catch (e) { /* not saved */ }
-  syncWind();
-  frame();
-  kick();
-  drawBed();
-  bedKick();
+  try { localStorage.setItem('sunprint:wind', windOn ? '1' : '0'); } catch (e) { /* not saved */ }
+  syncToggles(); frame(); kick();
 });
-syncWind();
-
-const SOUND_KEY = 'verse-garden:sound';
-const soundBtn = $('soundBtn');
-try { soundOn = localStorage.getItem(SOUND_KEY) === '1'; } catch (e) { /* default off */ }
-function syncSound() {
-  soundBtn.setAttribute('aria-pressed', String(soundOn));
-  soundBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
-}
+try { soundOn = localStorage.getItem('sunprint:sound') === '1'; } catch (e) { /* default off */ }
 soundBtn.addEventListener('click', () => {
   soundOn = !soundOn;
-  try { localStorage.setItem(SOUND_KEY, soundOn ? '1' : '0'); } catch (e) { /* not saved */ }
-  syncSound();
+  try { localStorage.setItem('sunprint:sound', soundOn ? '1' : '0'); } catch (e) { /* not saved */ }
+  syncToggles();
   if (soundOn) {
-    if (!ensureAudio()) { soundOn = false; syncSound(); toast('Sound isn’t available in this browser'); return; }
+    if (!ensureAudio()) { soundOn = false; syncToggles(); toast('Sound isn’t available in this browser'); return; }
     master.gain.setTargetAtTime(.6, actx.currentTime, .05);
-    // pick up the growth where it is, or ring the plant's chord if it has finished
     if (plant && T !== Infinity) scheduleSound(plant, { main: true, offset: T });
-    else if (plant) { const fl = soundEvents(plant).filter(e => e.k === 'bell' || e.k === 'tick').slice(-4); scheduleSound({ sound: fl.map((e, i) => ({ ...e, t: i * .09 })) }, { main: true }); }
+    else scheduleSound({ sound: [523.25, 659.25, 783.99].map((f, i) => ({ k: 'bell', t: i * .1, f, v: .08 })) });
   } else if (actx) master.gain.setTargetAtTime(0, actx.currentTime, .05);
   frame();
 });
-syncSound();
-// a saved "on" can only start after the viewer's first tap or key press
 if (soundOn) {
   const unlock = () => { ensureAudio(); document.removeEventListener('pointerdown', unlock); document.removeEventListener('keydown', unlock); };
   document.addEventListener('pointerdown', unlock); document.addEventListener('keydown', unlock);
 }
 document.addEventListener('visibilitychange', () => {
-  if (!actx) return;
-  if (document.hidden) actx.suspend().catch(() => {});
-  else if (soundOn) actx.resume().catch(() => {});
+  if (actx) { if (document.hidden) actx.suspend().catch(() => {}); else if (soundOn) actx.resume().catch(() => {}); }
+  if (!document.hidden) renderAll();
 });
+syncToggles();
 
-/* ---------- share links: the line is packed into the #hash ---------- */
-// on GitHub Pages, share links point at the page itself; everywhere else at the claude.ai artifact
-const ARTIFACT_URL = /\.github\.io$/.test(location.hostname) ? location.origin + location.pathname : 'https://claude.ai/artifact/8Hgv9WXDpyV6MGWf5tQRBd';
-const B62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-function encodeShare(text) {
-  let n = 1n;
-  for (const b of new TextEncoder().encode(text)) n = (n << 8n) | BigInt(b);
-  let s = '';
-  while (n > 0n) { s = B62[Number(n % 62n)] + s; n /= 62n; }
-  return 'v-' + s;
-}
-function decodeShare(code) {
-  const m = /^v-([0-9A-Za-z]{1,600})$/.exec(code || '');
-  if (!m) return null;
-  let n = 0n;
-  for (const c of m[1]) n = n * 62n + BigInt(B62.indexOf(c));
-  const bytes = [];
-  while (n > 1n) { bytes.unshift(Number(n & 255n)); n >>= 8n; }
-  if (n !== 1n || !bytes.length) return null;
-  try { return clean(new TextDecoder('utf-8', { fatal: true }).decode(new Uint8Array(bytes))) || null; }
-  catch (e) { return null; }
-}
-function setHash() {
-  if (!plant) return;
-  const code = encodeShare(plant.text);
-  if (location.hash.slice(1) !== code) { try { location.replace('#' + code); } catch (e) { /* hash unavailable */ } }
-}
-window.addEventListener('hashchange', () => {
-  const t = decodeShare(location.hash.slice(1));
-  if (t && (!plant || t !== plant.text)) { verse.value = t; play(t); }
-});
-const shareField = $('shareField');
-$('shareBtn').addEventListener('click', () => {
-  if (!plant) return;
-  const link = ARTIFACT_URL + '#' + encodeShare(plant.text);
-  shareField.value = link; shareField.rows = 1;
-  const fallback = () => {
-    shareField.hidden = false; shareField.focus(); shareField.select();
-    hint.textContent = 'Copy the link below. People need access to this page to open it.';
-  };
-  try {
-    navigator.clipboard.writeText(link).then(() => {
-      shareField.hidden = true;
-      hint.textContent = 'Link copied. Anyone who opens it sees ' + plant.name + '.';
-      toast('Link copied');
-    }, fallback);
-  } catch (e) { fallback(); }
-});
-
-const today = () => new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-function updateLabel() {
-  const no = String(plant.seed % 10000).padStart(4, '0');
-  $('tagNo').textContent = 'No. ' + no;
-  $('plateNo').textContent = 'VG · No. ' + no;
-  $('binomial').textContent = plant.name;
-  $('tagVerse').textContent = '“' + plant.text + '”';
-  $('sHeight').textContent = plant.st.height + ' cm';
-  $('sNodes').textContent = plant.st.nodes;
-  $('sLeaves').textContent = plant.st.leaves;
-  $('sFlowers').textContent = plant.st.flowers;
-  $('tagDate').textContent = today();
-  $('plantPreview').textContent = '“' + plant.text + '”';
-  const tags = $('labelTags'), rar = rarityOf(plant);
-  tags.textContent = '';
-  const chip = (txt, cls, tier) => { const s = document.createElement('span'); s.className = 'chip' + (cls ? ' ' + cls : ''); if (tier) s.dataset.tier = tier; s.textContent = txt; tags.appendChild(s); };
-  chip(rar.tier, '', rar.tier);
-  if (plant.tone === 'tea') chip('Tea-toned print', 'note');
-  const cd = commissionDay();
-  if (cd.solved && cd.line === plant.text) chip('Fulfils commission No. ' + commissionNo(todayKey()), 'note');
-  sheet.setAttribute('aria-label', `${plant.name}, grown from “${plant.text}”: ${plant.st.nodes} nodes, ${plant.st.leaves} leaves, ${plant.st.flowers} flowers, about ${plant.st.height} cm tall.`);
-}
-
-/* ---------- controls ---------- */
-const verse = $('verse'), hint = $('hint');
-// submit = typed by the viewer (Enter or Grow); only those count as commission tries
-function growFromInput(submit = false) {
-  const v = clean(verse.value);
-  if (!parse(v).length) { hint.textContent = 'Type a few words first.'; verse.focus(); return; }
-  hint.textContent = 'Press Enter to grow.';
-  play(v);
-  discover(plant);
-  if (submit) commissionTry(plant);
-}
-$('form').addEventListener('submit', e => { e.preventDefault(); growFromInput(true); });
-verse.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); growFromInput(true); } });
-$('replayBtn').addEventListener('click', () => { if (plant) play(plant.text); });
-
-const examples = [
-  'Hope is the thing with feathers.',
-  'Why do we keep the lights on?',
-  'Ship it, then sleep!',
-  'Meet me at 7, by the old oak?',
-  'I wandered lonely as a cloud, that floats on high o’er vales and hills.',
-  'error 404: page not found'
-];
-const tryList = $('tryList');
-examples.forEach(ex => {
-  const li = document.createElement('li'), b = document.createElement('button');
-  b.type = 'button'; b.textContent = ex;
-  b.addEventListener('click', () => { verse.value = ex; growFromInput(); });
-  li.appendChild(b); tryList.appendChild(li);
-});
-
-// leaf shapes in the key
-const shapeNames = { a: 'ovate', e: 'lanceolate', i: 'linear', o: 'round', u: 'heart', y: 'paired' };
-Object.entries(shapeNames).forEach(([v, name]) => {
-  const span = document.createElement('span');
-  const c = document.createElement('canvas'); c.width = 60; c.height = 60;
-  c.setAttribute('aria-hidden', 'true');
-  const g = c.getContext('2d'); g.setTransform(2, 0, 0, 2, 0, 0);
-  g.lineCap = 'round';
-  DRAW.leaf(g, { x: 4, y: 26, a: -.75, L: 20, shape: v, broad: false }, 1);
-  span.appendChild(c);
-  span.appendChild(document.createTextNode(v + ' ' + name));
-  $('leafRow').appendChild(span);
-});
-
-/* ---------- herbarium (this browser only) ---------- */
-const KEY = 'verse-garden:herbarium:v1';
-function load() {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (raw === null) return null;
-    const arr = JSON.parse(raw);
-    return Array.isArray(arr) ? arr : null;
-  } catch (e) { return null; }
-}
-function save(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) { /* storage unavailable */ } }
-let herb = load();
-if (!herb) herb = [
-  { text: 'I wandered lonely as a cloud, that floats on high o’er vales and hills.', date: today(), ex: true },
-  { text: 'Why do we keep the lights on?', date: today(), ex: true },
-  { text: 'Ship it, then sleep!', date: today(), ex: true }
-];
-let thumbPaper = null;
-const thumbPapers = {};
-const thumbPaperFor = tone => thumbPapers[tone] || (thumbPapers[tone] = makePaper(150, 187.5, 2, 11, tone));
-function renderHerb() {
-  const grid = $('herbGrid');
-  grid.textContent = '';
-  $('herbEmpty').hidden = herb.length > 0;
-  if (!thumbPaper) thumbPaper = makePaper(150, 187.5, 2, 11);
-  herb.forEach((item, idx) => {
-    const pl = grow(item.text);
-    const wrap = document.createElement('div'); wrap.className = 'spec-wrap';
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'spec';
-    b.setAttribute('aria-label', `Regrow ${pl.name}: “${pl.text}”`);
-    const c = document.createElement('canvas'); c.width = 300; c.height = 375;
-    const g = c.getContext('2d'); g.setTransform(2, 0, 0, 2, 0, 0);
-    drawPlant(g, pl, 150, 187.5, Infinity, thumbPaperFor(pl.tone), { glow: 3, scaleBar: false });
-    const nm = document.createElement('span'); nm.className = 'spec-name'; nm.textContent = pl.name;
-    const dt = document.createElement('span'); dt.className = 'spec-date';
-    dt.textContent = rarityOf(pl).tier + ' · ' + (item.ex ? 'Example' : 'Pressed ' + item.date);
-    b.append(c, nm, dt);
-    b.addEventListener('click', () => viewLine(item.text));
-    const del = document.createElement('button'); del.type = 'button'; del.className = 'spec-del';
-    del.textContent = '×'; del.setAttribute('aria-label', 'Remove ' + pl.name);
-    del.addEventListener('click', () => { herb.splice(idx, 1); save(herb); renderHerb(); toast('Removed from herbarium'); });
-    wrap.append(b, del);
-    grid.appendChild(wrap);
-  });
-}
-$('pressBtn').addEventListener('click', () => {
-  if (!plant) return;
-  herb = herb.filter(h => clean(h.text) !== plant.text);
-  herb.unshift({ text: plant.text, date: today() });
-  herb = herb.slice(0, 30);
-  save(herb); renderHerb();
-  toast('Pressed ' + plant.name);
-  discoverEvent('pressed');
-});
-
-// toasts queue up so a discovery never hides the message before it
+/* ---------- toasts ---------- */
 const toastQ = [];
 let toastBusy = false;
 function toast(msg) { toastQ.push(msg); if (!toastBusy) nextToast(); }
@@ -1103,511 +1058,403 @@ function nextToast() {
   const t = $('toast'), m = toastQ.shift();
   if (!m) { toastBusy = false; return; }
   toastBusy = true; t.textContent = m; t.classList.add('on');
-  setTimeout(() => { t.classList.remove('on'); setTimeout(nextToast, 250); }, 2000);
+  setTimeout(() => { t.classList.remove('on'); setTimeout(nextToast, 250); }, 2600);
 }
 
-/* ---------- shared garden (db: garden/<person id> = {plants:[{text, at}]}) ---------- */
-const MAX_PER = 5, BED_H = 340, LABEL_H = 62;
-const bedWrap = $('bedWrap'), bed = $('bed'), bctx = bed.getContext('2d'), bedSpacer = $('bedSpacer');
-const plantBtn = $('plantBtn'), gHintEl = $('gHint'), gStatusEl = $('gStatus');
-let slotW = 160, bedW = 0, bedDpr = 1, bedPaper = null;
-const bedPapers = {};
-const bedPaperFor = tone => bedPapers[tone] || (bedPapers[tone] = makePaper(bedW, BED_H, bedDpr, 23, tone));
-let gardenRows = [], gardenState = 'loading', names = {};
-let gdb = null, guser = null, myId = null, amOwner = false, canWrite = null, gBusy = false;
-let seeded = false, scrollEndPending = false;
-const arrivedAt = new Map();
-const growCache = new Map();
-function grown(text) {
-  let p = growCache.get(text);
-  if (!p) { p = grow(text); growCache.set(text, p); if (growCache.size > 400) growCache.delete(growCache.keys().next().value); }
-  return p;
-}
-function fitText(g, s, max) {
-  if (g.measureText(s).width <= max) return s;
-  let lo = 0, hi = s.length;
-  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (g.measureText(s.slice(0, m) + '…').width <= max) lo = m; else hi = m - 1; }
-  return s.slice(0, lo).trimEnd() + '…';
-}
-function wrap2(g, s, max) {
-  const lines = [''];
-  for (const w of s.split(' ')) {
-    const cur = lines[lines.length - 1], next = cur ? cur + ' ' + w : w;
-    if (!cur || g.measureText(next).width <= max) lines[lines.length - 1] = next;
-    else if (lines.length < 2) lines.push(w);
-    else { lines[1] = fitText(g, lines[1] + ' ' + w, max); return lines; }
+/* ---------- proving you're up ---------- */
+const norm = s => s.toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+function similarity(a, b) {
+  if (!a.length) return 0;
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
   }
-  return lines.map(l => fitText(g, l, max));
+  return 1 - prev[b.length] / Math.max(a.length, b.length);
 }
-
-function sizeBed() {
-  const w = bedWrap.clientWidth;
-  if (!w) return;
-  slotW = w < 520 ? 132 : 160;
-  bedDpr = Math.min(2, window.devicePixelRatio || 1);
-  bedW = w;
-  bed.width = Math.round(w * bedDpr); bed.height = Math.round(BED_H * bedDpr);
-  bed.style.width = w + 'px'; bed.style.height = BED_H + 'px';
-  bedPaper = makePaper(w, BED_H, bedDpr, 23);
-  for (const k in bedPapers) delete bedPapers[k];
-  bedSpacer.style.width = Math.max(w, gardenRows.length * slotW) + 'px';
-  drawBed();
-}
-function drawBed(now = performance.now()) {
-  if (!bedPaper) return false;
-  const g = bctx;
-  g.setTransform(bedDpr, 0, 0, bedDpr, 0, 0);
-  g.drawImage(bedPaper, 0, 0, bedW, BED_H);
-  const plantH = BED_H - LABEL_H, groundY = Math.round(plantH * .8) + .5;
-  g.strokeStyle = 'rgba(234,242,251,.14)'; g.lineWidth = 1;
-  g.beginPath(); g.moveTo(0, groundY); g.lineTo(bedW, groundY); g.stroke();
-  if (!gardenRows.length) {
-    const msg = { loading: 'Opening the garden…', ready: 'Nothing planted yet. Plant the first line.', offline: 'The garden can’t be reached right now.', error: 'The garden stopped updating.', unavailable: 'The shared garden opens on claude.ai.' }[gardenState];
-    g.fillStyle = 'rgba(234,242,251,.62)'; g.font = 'italic 20px "IM Fell English", Georgia, serif'; g.textAlign = 'center';
-    g.fillText(msg, bedW / 2, plantH * .45); g.textAlign = 'start';
-    return false;
-  }
-  const sl = bedWrap.scrollLeft;
-  const i0 = Math.max(0, Math.floor(sl / slotW) - 1), i1 = Math.min(gardenRows.length - 1, Math.ceil((sl + bedW) / slotW));
-  let growing = false;
-  for (let i = i0; i <= i1; i++) {
-    const row = gardenRows[i], x0 = i * slotW - sl;
-    let T = Infinity;
-    if (row.arrived) { T = (now - row.arrived) / 1000; if (T < row.pl.end + .05) growing = true; else T = Infinity; }
-    if (row.pl.tone !== 'blue') {
-      // a toned print gets its own strip of toned paper in the bed
-      const tp = bedPaperFor(row.pl.tone), sx = Math.max(0, x0), sw = Math.min(bedW, x0 + slotW) - sx;
-      if (sw > 0) g.drawImage(tp, sx * bedDpr, 0, sw * bedDpr, BED_H * bedDpr, sx, 0, sw, BED_H);
-      g.strokeStyle = 'rgba(245,234,216,.16)'; g.lineWidth = 1;
-      g.beginPath(); g.moveTo(x0, groundY); g.lineTo(x0 + slotW, groundY); g.stroke();
-    }
-    drawPlantAt(g, row.pl, x0, 0, slotW, plantH, T, { glow: 0, wind: windOn ? { t: (now - windStart) / 1000 - i * .35 } : null }, groundY);
-    const tx = x0 + 12, maxW = slotW - 22, mine = row.uid === myId;
-    g.font = '10px "JetBrains Mono", ui-monospace, monospace';
-    g.fillStyle = mine ? '#f3cf7a' : 'rgba(234,242,251,.62)';
-    g.fillText(fitText(g, mine ? 'you' : (names[row.uid] || 'Someone'), maxW), tx, plantH + 16);
-    g.fillStyle = INK; g.font = 'italic 13px "IM Fell English", Georgia, serif';
-    wrap2(g, row.text, maxW).forEach((ln, k) => g.fillText(ln, tx, plantH + 35 + k * 16));
-    g.strokeStyle = 'rgba(234,242,251,.1)';
-    g.beginPath(); g.moveTo(x0 + slotW - .5, plantH + 4); g.lineTo(x0 + slotW - .5, BED_H - 8); g.stroke();
-  }
-  return growing;
-}
-let bedRaf = 0, bedVisible = false, bedLast = 0;
-function bedTick(now) {
-  bedRaf = 0;
-  let growing = true;
-  if (now - bedLast >= 40) { growing = drawBed(now); bedLast = now; }
-  if (bedVisible && (windOn || growing)) bedRaf = requestAnimationFrame(bedTick);
-}
-function bedKick() { if (!bedRaf && bedVisible) bedRaf = requestAnimationFrame(bedTick); }
-new IntersectionObserver(es => { bedVisible = es[0].isIntersecting; if (bedVisible) bedKick(); }).observe(bedWrap);
-let scrollQueued = false;
-bedWrap.addEventListener('scroll', () => {
-  if (scrollQueued) return;
-  scrollQueued = true;
-  requestAnimationFrame(() => { scrollQueued = false; drawBed(); });
-}, { passive: true });
-bed.addEventListener('click', e => {
-  const r = bed.getBoundingClientRect();
-  const row = gardenRows[Math.floor((e.clientX - r.left + bedWrap.scrollLeft) / slotW)];
-  if (row) viewLine(row.text);
-});
-function viewLine(text) {
-  verse.value = text; play(text); discover(plant);
-  plateEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-}
-
-function setGardenState(s) {
-  gardenState = s;
-  const people = new Set(gardenRows.map(r => r.uid)).size;
-  gStatusEl.textContent = {
-    loading: 'Opening the garden…',
-    ready: gardenRows.length ? `${gardenRows.length} ${gardenRows.length === 1 ? 'plant' : 'plants'} from ${people} ${people === 1 ? 'gardener' : 'gardeners'}` : 'Nobody has planted yet.',
-    offline: 'Can’t reach the garden right now. It will appear when the connection returns.',
-    error: 'The garden stopped updating. Reload the page to reconnect.',
-    unavailable: 'Open this page on claude.ai, signed in, to see and plant in the shared garden.'
-  }[s];
-  syncPlantBtn();
-  drawBed();
-}
-function syncPlantBtn() {
-  plantBtn.disabled = !(gdb && myId && gardenState === 'ready' && canWrite !== false) || gBusy;
-}
-function gHint(msg) { gHintEl.textContent = msg; }
-
-function renderGardenList() {
-  $('gCount').textContent = gardenRows.length;
-  const ul = $('gList');
-  ul.textContent = '';
-  [...gardenRows].reverse().forEach(row => {
-    const li = document.createElement('li');
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'g-line';
-    b.textContent = row.text; b.addEventListener('click', () => viewLine(row.text));
-    const meta = document.createElement('span'); meta.className = 'g-meta';
-    const d = row.at ? new Date(row.at) : null;
-    meta.textContent = (row.uid === myId ? 'you' : (names[row.uid] || 'Someone')) + (d && !isNaN(d) ? ' · ' + d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : '');
-    li.append(b, meta);
-    if (row.uid === myId || amOwner) {
-      const del = document.createElement('button'); del.type = 'button'; del.className = 'g-del';
-      del.textContent = 'Remove'; del.setAttribute('aria-label', 'Remove “' + row.text + '” from the garden');
-      del.addEventListener('click', () => removePlanting(row));
-      li.appendChild(del);
-    }
-    ul.appendChild(li);
+function quotePanel(p, pass) {
+  const q = QUOTES[cyrb53(keyOf(new Date()) + ':' + (S ? S.seed : 0)) % QUOTES.length];
+  const target = norm(q[0]);
+  const ta = el('textarea', { id: 'quoteIn', rows: '3', class: 'q-in', placeholder: 'Type the quote here…', autocomplete: 'off', autocapitalize: 'sentences', spellcheck: 'false', 'aria-label': 'Type the quote' });
+  const bar = el('div', { class: 'meter', 'aria-hidden': 'true' }, el('span'));
+  const info = el('p', { class: 'q-info' }, 'Type it out word for word. Pasting is turned off.');
+  ta.addEventListener('paste', e => { e.preventDefault(); info.textContent = 'Pasting is turned off. Typing it is the proof that you’re awake.'; });
+  ta.addEventListener('drop', e => e.preventDefault());
+  ta.addEventListener('input', () => {
+    const typed = norm(ta.value), s = similarity(typed, target);
+    bar.firstChild.style.width = Math.round(s * 100) + '%';
+    if (s >= .92 && typed.length >= target.length * .9) { info.textContent = 'That’s it. You’re up.'; ta.disabled = true; pass('quote'); }
+    else info.textContent = `${Math.round(s * 100)}% there.`;
   });
+  p.append(el('blockquote', { class: 'q-text' }, '“' + q[0] + '”'), el('div', { class: 'q-by' }, '— ' + q[1]), ta, bar, info);
 }
-
-function applyGarden(snap) {
-  const now = performance.now(), rows = [];
-  for (const d of snap.docs) {
-    const body = d.data() || {};
-    const list = Array.isArray(body.plants) ? body.plants.slice(0, MAX_PER) : [];
-    for (const p of list) {
-      if (!p || typeof p.text !== 'string') continue;
-      const text = clean(p.text).slice(0, 180);
-      if (!parse(text).length) continue;
-      const at = typeof p.at === 'string' ? p.at.slice(0, 40) : '';
-      const key = d.id + '|' + at + '|' + text;
-      if (!arrivedAt.has(key)) arrivedAt.set(key, seeded ? now : 0);
-      rows.push({ key, uid: d.id, text, at, pl: grown(text), arrived: arrivedAt.get(key) });
-    }
-  }
-  rows.sort((a, b) => a.at < b.at ? -1 : a.at > b.at ? 1 : 0);
-  // new arrivals sing softly as they grow in
-  rows.filter(r => r.arrived === now).slice(-3).forEach(r => scheduleSound(r.pl, { gain: .4 }));
-  seeded = true;
-  gardenRows = rows;
-  bedSpacer.style.width = Math.max(bedW, rows.length * slotW) + 'px';
-  if (scrollEndPending) { scrollEndPending = false; bedWrap.scrollLeft = bedWrap.scrollWidth; }
-  setGardenState('ready');
-  renderGardenList();
-  bedKick();
-  if (guser) {
-    const ids = [...new Set(rows.map(r => r.uid))];
-    guser.profiles(ids).then(ps => {
-      names = {};
-      for (const id of ids) names[id] = (ps[id] && ps[id].name) || '';
-      drawBed(); renderGardenList();
+function fmtAgo(ms) {
+  const m = Math.round(Math.abs(ms) / 60000);
+  if (m < 60) return plural(m, 'minute', 'minutes') + ' ago';
+  const h = Math.round(m / 60);
+  return h < 48 ? plural(h, 'hour', 'hours') + ' ago' : plural(Math.round(h / 24), 'day', 'days') + ' ago';
+}
+function photoPanel(p, pass) {
+  const input = el('input', { type: 'file', id: 'photoIn', accept: 'image/*', capture: 'environment', class: 'sr-only' });
+  const lab = el('label', { for: 'photoIn', class: 'btn primary', style: 'justify-self:start' }, 'Take a photo');
+  const info = el('p', { class: 'q-info' }, 'Take a fresh photo of your morning: the window, the kettle, your feet on the floor. It has to be from the last 10 minutes. The photo stays on your device; only the time you woke up is saved.');
+  const prev = el('img', { class: 'p-prev', alt: 'Your morning photo', hidden: true });
+  input.addEventListener('change', () => {
+    const f = input.files && input.files[0];
+    if (!f) return;
+    if (!/^image\//.test(f.type)) { info.textContent = 'That file isn’t a photo. Take a photo instead.'; return; }
+    prev.src = URL.createObjectURL(f); prev.hidden = false;
+    const age = Date.now() - f.lastModified;
+    if (age > 10 * 60000 || age < -5 * 60000) { info.textContent = `That photo was taken ${fmtAgo(age)}. Take a new one now.`; lab.textContent = 'Take another photo'; return; }
+    info.textContent = 'Fresh photo. You’re up.';
+    lab.hidden = true;
+    pass('photo');
+  });
+  p.append(lab, input, info, prev);
+}
+function makeSum() {
+  const R = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+  const t = R(0, 2);
+  if (t === 0) { const a = R(12, 29), b = R(3, 9), c = R(11, 99); return { text: `${a} × ${b} + ${c}`, ans: a * b + c }; }
+  if (t === 1) { const a = R(12, 29), b = R(3, 9), c = R(11, a * b - 1); return { text: `${a} × ${b} − ${c}`, ans: a * b - c }; }
+  const a = R(11, 39), b = R(11, 39), c = R(3, 7); return { text: `(${a} + ${b}) × ${c}`, ans: (a + b) * c };
+}
+function mathPanel(p, pass) {
+  let q;
+  const qEl = el('div', { class: 'm-q', 'aria-live': 'polite' });
+  const inp = el('input', { type: 'text', id: 'mathIn', inputmode: 'numeric', class: 'm-in', autocomplete: 'off', 'aria-label': 'Your answer' });
+  const btn = el('button', { type: 'button', class: 'btn primary' }, 'Check');
+  const info = el('p', { class: 'q-info' }, 'Work it out in your head, no calculator.');
+  const next = () => { q = makeSum(); qEl.textContent = q.text + ' = ?'; inp.value = ''; };
+  const check = () => {
+    const v = parseInt(inp.value.replace(/[^\d-]/g, ''), 10);
+    if (Number.isNaN(v)) { info.textContent = 'Type a number first.'; return; }
+    if (v === q.ans) { info.textContent = 'Correct. You’re up.'; inp.disabled = true; btn.disabled = true; pass('math'); }
+    else { info.textContent = `Not quite: it was ${q.ans}. Here’s another one.`; next(); inp.focus(); }
+  };
+  btn.addEventListener('click', check);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); check(); } });
+  next();
+  p.append(qEl, el('div', { class: 'm-row' }, inp, btn), info);
+}
+const METHODS = [['quote', 'Quote'], ['photo', 'Photo'], ['math', 'Sum']];
+function buildChallenge(container, pass) {
+  let current = (S && S.pref) || 'quote';
+  const tabs = el('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Ways to prove you’re up' });
+  const panel = el('div', { class: 'c-panel', role: 'tabpanel' });
+  const render = () => {
+    panel.textContent = '';
+    ({ quote: quotePanel, photo: photoPanel, math: mathPanel })[current](panel, pass);
+  };
+  METHODS.forEach(([id, label]) => {
+    const b = el('button', { type: 'button', role: 'tab', class: 'tab', 'aria-selected': String(id === current) }, label);
+    b.addEventListener('click', () => {
+      current = id;
+      tabs.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', String(t === b)));
+      if (S && S.pref !== id) { S.pref = id; persist(); }
+      render();
     });
-  }
-}
-
-async function plantShared() {
-  if (!plant || !gdb || gBusy) return;
-  if (!myId) { gHint('Sign in to claude.ai to plant here.'); return; }
-  const mine = gardenRows.filter(r => r.uid === myId);
-  if (mine.some(r => r.text === plant.text)) { gHint('That line is already growing in the garden.'); return; }
-  if (mine.length >= MAX_PER) { gHint(`You have ${MAX_PER} plants in the garden. Remove one to plant another.`); return; }
-  gBusy = true; syncPlantBtn(); scrollEndPending = true;
-  try {
-    await gdb.doc('garden/' + myId).set({ plants: [...mine.map(r => ({ text: r.text, at: r.at })), { text: plant.text, at: new Date().toISOString() }] });
-    toast('Planted ' + plant.name);
-    discoverEvent('planted');
-    gHint('Planted. Everyone with this page open sees it grow in.');
-  } catch (e) {
-    scrollEndPending = false;
-    const code = e && e.code;
-    if (code === 'invalid_argument') { canWrite = false; gHint('You can look around, but your access to this page doesn’t include planting. The owner can make you a Contributor.'); }
-    else if (code === 'quota_exceeded') gHint('The garden is full. The owner needs to clear some space first.');
-    else gHint('Couldn’t plant just now. Try again in a moment.');
-  } finally { gBusy = false; syncPlantBtn(); }
-}
-plantBtn.addEventListener('click', plantShared);
-
-async function removePlanting(row) {
-  if (!gdb || gBusy) return;
-  gBusy = true; syncPlantBtn();
-  try {
-    const ref = gdb.doc('garden/' + row.uid);
-    const rest = gardenRows.filter(r => r.uid === row.uid && r.key !== row.key).map(r => ({ text: r.text, at: r.at }));
-    if (rest.length) await ref.set({ plants: rest }); else await ref.delete();
-    toast('Removed from the garden');
-  } catch (e) {
-    toast(e && e.code === 'invalid_argument' ? 'You can only remove your own plants.' : 'Couldn’t remove it. Try again.');
-  } finally { gBusy = false; syncPlantBtn(); }
-}
-
-async function startGarden() {
-  if (!window.claude || typeof window.claude.use !== 'function') { setGardenState('unavailable'); return; }
-  const [db, u] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
-  gdb = db; guser = u;
-  if (!db) { setGardenState('unavailable'); return; }
-  if (u) {
-    const me = await u.me();
-    myId = me.id; amOwner = me.isOwner;
-    canWrite = await u.can('data.write');
-  }
-  if (!myId) gHint('You can look around. Sign in to claude.ai to plant your own line.');
-  else if (canWrite === false) gHint('You can look around, but your access to this page doesn’t include planting.');
-  syncPlantBtn();
-  const timer = setTimeout(() => { if (gardenState === 'loading') setGardenState('offline'); }, 10000);
-  db.collection('garden').onSnapshot(snap => {
-    if (!snap.metadata.fromCache) clearTimeout(timer);
-    applyGarden(snap);
-  }, err => {
-    clearTimeout(timer);
-    setGardenState(err && err.code === 'revoked' ? 'unavailable' : 'error');
+    tabs.appendChild(b);
   });
+  container.append(tabs, panel);
+  render();
 }
 
-/* ---------- field journal: traits to discover (this browser only) ---------- */
-const TRAITS = [
-  { id: 'sprout', name: 'First sprout', tier: 'common', hint: 'Grow a line of your own.', test: () => true },
-  { id: 'bloom', name: 'Bloom', tier: 'common', hint: 'End a word with a full stop.', test: p => p.st.flowers > 0 },
-  { id: 'bud', name: 'Bud set', tier: 'common', hint: 'Pause with a comma.', test: p => p.st.buds > 0 },
-  { id: 'tendril', name: 'Tendril', tier: 'common', hint: 'Ask a question.', test: p => p.st.tendrils > 0 },
-  { id: 'needles', name: 'Paired needles', tier: 'common', hint: 'Use a word with a y in it.', test: p => (p.st.shapes.y || 0) > 0 },
-  { id: 'double', name: 'Double bloom', tier: 'uncommon', hint: 'Say it with feeling!', test: p => p.st.doubles > 0 },
-  { id: 'berries', name: 'Berries', tier: 'uncommon', hint: 'Put a number in your line.', test: p => p.st.berries > 0 },
-  { id: 'broad', name: 'Broadleaf', tier: 'uncommon', hint: 'Capitalise Five Or More Words.', test: p => p.st.capWords >= 5 },
-  { id: 'every', name: 'Every shape', tier: 'uncommon', hint: 'Grow a, e, i, o and u leaves on one plant.', test: p => [...'aeiou'].every(v => p.st.shapes[v] > 0) },
-  { id: 'giant', name: 'Giant', tier: 'rare', hint: 'Grow a plant over 60 cm tall.', test: p => +p.st.height > 60 },
-  { id: 'bouquet', name: 'Bouquet', tier: 'rare', hint: 'Five or more flowers on one plant.', test: p => p.st.flowers >= 5 },
-  { id: 'leafless', name: 'Leafless', tier: 'rare', hint: 'Three or more words and not one leaf.', test: p => p.st.nodes >= 3 && p.st.leaves === 0 },
-  { id: 'lipogram', name: 'Lipogram', tier: 'rare', hint: 'Eight or more words without the letter e.', test: p => p.st.nodes >= 8 && !/[eéèêë]/i.test(p.text) },
-  { id: 'toned', name: 'Tea-toned print', tier: 'rare', hint: 'About one line in 24 prints warm. Keep growing.', test: p => p.tone === 'tea' },
-  { id: 'pressed', name: 'Pressed', tier: 'common', hint: 'Press a plant into your herbarium.' },
-  { id: 'planted', name: 'Gardener', tier: 'common', hint: 'Plant a line in the shared garden.' },
-  { id: 'commission', name: 'Commissioned', tier: 'uncommon', hint: 'Fulfil a commission for the Herbarium Society.' },
-  { id: 'regular', name: 'Regular', tier: 'rare', hint: 'Fulfil the daily commission three days running.' }
-];
-const PTS = { common: 0, uncommon: 1, rare: 2 };
-const shortDate = () => new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-function rarityOf(pl) {
-  let pts = 0;
-  for (const t of TRAITS) if (t.test && t.test(pl)) pts += PTS[t.tier];
-  if (pl.tone === 'tea') pts += 1;
-  return { pts, tier: pts >= 5 ? 'Legendary' : pts >= 3 ? 'Rare' : pts >= 1 ? 'Uncommon' : 'Common' };
-}
-const J_KEY = 'verse-garden:journal:v1';
-let journal = {};
-try { const j = JSON.parse(localStorage.getItem(J_KEY) || '{}'); if (j && typeof j === 'object') journal = j; } catch (e) { /* fresh journal */ }
-function saveJournal() { try { localStorage.setItem(J_KEY, JSON.stringify(journal)); } catch (e) { /* not saved */ } }
-function chimeDiscovery(big) {
-  const notes = big ? [523.25, 659.25, 783.99, 1046.5] : [783.99, 1174.66];
-  scheduleSound({ sound: notes.map((f, i) => ({ k: 'bell', t: i * .11, f, v: .08 })) });
-}
-function announce(found) {
-  if (!found.length) return;
-  saveJournal(); renderJournal();
-  toast('New in your field journal: ' + found.join(', '));
-  chimeDiscovery(false);
-}
-function discover(pl) {
-  if (!pl) return;
-  const found = [];
-  for (const t of TRAITS) if (t.test && !journal[t.id] && t.test(pl)) { journal[t.id] = shortDate(); found.push(t.name); }
-  announce(found);
-}
-function discoverEvent(id) {
-  if (journal[id]) return;
-  const t = TRAITS.find(x => x.id === id);
-  journal[id] = shortDate();
-  announce([t.name]);
-}
-function renderJournal() {
-  const grid = $('jGrid');
-  grid.textContent = '';
-  let n = 0;
-  for (const t of TRAITS) {
-    const got = journal[t.id];
-    if (got) n++;
-    const d = document.createElement('div'); d.className = 'j-tile' + (got ? ' found' : '');
-    const nm = document.createElement('div'); nm.className = 'j-name'; nm.textContent = t.name;
-    const h = document.createElement('div'); h.className = 'j-hint'; h.textContent = t.hint;
-    const m = document.createElement('div'); m.className = 'j-meta';
-    const tier = document.createElement('span'); tier.textContent = t.tier; if (t.tier === 'rare') tier.className = 't-rare';
-    const when = document.createElement('span'); when.textContent = got ? 'Found ' + got : 'Not yet';
-    m.append(tier, when);
-    d.append(nm, h, m);
-    grid.appendChild(d);
+/* ---------- this morning ---------- */
+let practice = false, todaySig = '';
+const PROOF = { quote: 'by typing a quote', photo: 'with a photo', math: 'by solving a sum' };
+function completeCheckIn(method) {
+  if (practice) {
+    practice = false; todaySig = '';
+    toast('Practice passed. In your window, that counts as waking up.');
+    setTimeout(() => renderAll(), 900);
+    return;
   }
-  $('jCount').textContent = `${n} of ${TRAITS.length} found`;
-  $('jBar').style.width = (n / TRAITS.length * 100) + '%';
+  const now = Date.now(), k = keyOf(new Date(now)), st = status(k, now);
+  if (st.s !== 'open') { todaySig = ''; renderAll(); toast('Your window has closed for today.'); return; }
+  S.log[k] = { at: now, proof: method };
+  persist();
+  const ev = evaluate(history(now));
+  setTimeout(() => {
+    todaySig = '';
+    renderAll(true);
+    toast(ev.streak % 7 === 0 ? `${ev.streak} mornings in a row. Your plant flowered.` : `Up at ${fmtTime(now)}. Your plant grew.`);
+  }, 700);
 }
-
-/* ---------- commissions: three requirements, six growths ---------- */
-const MAX_TRIES = 6;
-const C_KEY = 'verse-garden:commissions:v1';
-const EPOCH = Date.UTC(2026, 10, 1);
-const todayKey = (d = new Date()) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-function commissionNo(key) { const [y, m, d] = key.split('-').map(Number); return Math.round((Date.UTC(y, m - 1, d) - EPOCH) / 86400000) + 1; }
-const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
-// one requirement from each family, so the three never contradict each other
-const C_SIZE = [
-  (r, fit) => {
-    const lo = fit === 'tight' ? 10 + Math.floor(r() * 3) * 5 : fit === 'big' ? 30 + Math.floor(r() * 5) * 5 : 15 + Math.floor(r() * 8) * 5;
-    return { label: `stands ${lo}–${lo + 10} cm tall`, test: p => +p.st.height >= lo && +p.st.height <= lo + 10 };
-  },
-  (r, fit) => {
-    const n = fit === 'tight' ? 4 + Math.floor(r() * 3) : fit === 'big' ? 6 + Math.floor(r() * 4) : 4 + Math.floor(r() * 6);
-    return { label: `has exactly ${n} words (nodes)`, test: p => p.st.nodes === n };
+function renderToday(hist, ev, now) {
+  const k = keyOf(new Date(now));
+  const st = hist.length && hist[hist.length - 1].k === k ? hist[hist.length - 1] : { k, ...status(k, now) };
+  const sc = schedFor(k) || S.schedules[S.schedules.length - 1];
+  $('tDate').textContent = 'Today · ' + fmtDayLong(k);
+  $('tWin').textContent = fmtHHMM(sc.start) + ' – ' + fmtHHMM(sc.end);
+  const sig = k + '|' + st.s + '|' + practice;
+  const countText = st.s === 'upcoming' ? fmtSpan(st.a - now) : st.s === 'open' ? fmtSpan(st.b - now) : '';
+  const cnt = document.querySelector('#tStatus .count, #tSub .count');
+  if (sig === todaySig) { if (cnt) cnt.textContent = countText; return; }
+  todaySig = sig;
+  const status$ = $('tStatus'), sub = $('tSub'), body = $('tBody');
+  status$.textContent = ''; sub.textContent = ''; body.textContent = '';
+  const count = () => el('span', { class: 'count' }, countText);
+  const practiceBtn = () => el('div', { class: 'actions' }, (() => {
+    const b = el('button', { type: 'button', class: 'btn' }, 'Try a practice check-in');
+    b.addEventListener('click', () => { practice = true; todaySig = ''; renderAll(); });
+    return b;
+  })());
+  if (practice) {
+    status$.textContent = 'Practice run';
+    sub.textContent = 'Try the check-in now. It won’t count, and your plant won’t change.';
+    const close = el('button', { type: 'button' }, 'Close');
+    close.addEventListener('click', () => { practice = false; todaySig = ''; renderAll(); });
+    body.append(el('div', { class: 'practice-note' }, el('span', {}, 'Practice · doesn’t count'), close));
+    buildChallenge(body, completeCheckIn);
+    return;
   }
-];
-const C_BLOOM = [
-  r => { const n = 1 + Math.floor(r() * 3); return { label: `carries exactly ${plural(n, 'flower', 'flowers')}`, test: p => p.st.flowers === n }; },
-  () => ({ label: 'has no flowers and a closed top bud', test: p => p.st.flowers === 0 && p.st.closed }),
-  () => ({ label: 'has at least one double flower', test: p => p.st.doubles > 0 }),
-  r => { const n = 1 + Math.floor(r() * 2); return { label: `grows exactly ${plural(n, 'tendril', 'tendrils')}`, test: p => p.st.tendrils === n }; }
-];
-const C_LEAF = [
-  r => { const n = 12 + Math.floor(r() * 3) * 4; return { label: `has at least ${n} leaves`, test: p => p.st.leaves >= n, fit: 'big' }; },
-  r => { const n = 4 + Math.floor(r() * 4); return { label: `has no more than ${n} leaves`, test: p => p.st.leaves <= n, fit: 'tight' }; },
-  () => ({ label: 'has a leaf of every shape: a, e, i, o, u', test: p => [...'aeiou'].every(v => p.st.shapes[v] > 0) }),
-  () => ({ label: 'has no lanceolate leaves (no letter e)', test: p => !p.st.shapes.e }),
-  () => ({ label: 'bears berries', test: p => p.st.berries > 0 }),
-  r => { const n = 3 + Math.floor(r() * 4); return { label: `has at least ${n} broad leaves`, test: p => p.st.broad >= n }; }
-];
-function makeReqs(seedStr) {
-  const r = mulberry32(cyrb53(seedStr));
-  const pick = a => a[Math.floor(r() * a.length)];
-  const leaf = pick(C_LEAF)(r), bloom = pick(C_BLOOM)(r), size = pick(C_SIZE)(r, leaf.fit);
-  return [size, bloom, leaf];
-}
-let cStore = {};
-try { const c = JSON.parse(localStorage.getItem(C_KEY) || '{}'); if (c && typeof c === 'object') cStore = c; } catch (e) { /* fresh */ }
-function saveC() { try { localStorage.setItem(C_KEY, JSON.stringify(cStore)); } catch (e) { /* not saved */ } }
-function commissionDay(key = todayKey()) { return cStore[key] || (cStore[key] = { tries: [], solved: false, line: '' }); }
-function streak() {
-  const d = new Date();
-  if (!commissionDay(todayKey(d)).solved) d.setDate(d.getDate() - 1);
-  let n = 0;
-  while (cStore[todayKey(d)] && cStore[todayKey(d)].solved) { n++; d.setDate(d.getDate() - 1); }
-  return n;
-}
-// the session: the daily, or an unscored practice brief
-let cMode = { practice: false, active: false, reqs: makeReqs('daily:' + todayKey()), day: null };
-function cState() {
-  const s = cMode.practice ? cMode.day : commissionDay();
-  const status = s.solved ? 'solved' : s.tries.length >= MAX_TRIES ? 'failed' : cMode.active ? 'active' : 'idle';
-  return { s, status };
-}
-function commissionTry(pl) {
-  const { s, status } = cState();
-  if (status !== 'active') return;
-  const res = cMode.reqs.map(c => c.test(pl));
-  s.tries.push(res);
-  if (res.every(Boolean)) {
-    s.solved = true; s.line = pl.text; cMode.active = false;
-    toast(cMode.practice ? 'Practice brief fulfilled' : `Commission fulfilled in ${s.tries.length} of ${MAX_TRIES}`);
-    scheduleSound({ sound: [523.25, 659.25, 783.99, 1046.5, 1318.5].map((f, i) => ({ k: 'bell', t: .9 + i * .12, f, v: .09 })) });
-    discoverEvent('commission');
-    if (!cMode.practice && streak() >= 3) discoverEvent('regular');
-    updateLabel();
-  } else if (s.tries.length >= MAX_TRIES) { cMode.active = false; }
-  if (!cMode.practice) saveC();
-  renderCommission();
-}
-function resultText() {
-  const { s } = cState();
-  const rows = s.tries.map(t => t.map(b => b ? '🟦' : '⬜').join('')).join('\n');
-  const head = cMode.practice ? 'Verse Garden · practice brief' : `Verse Garden · Commission No. ${commissionNo(todayKey())}`;
-  return `${head} · ${s.solved ? s.tries.length : 'X'}/${MAX_TRIES}\n${rows}\n${ARTIFACT_URL}`;
-}
-function cButton(label, primary, fn) {
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (primary ? ' primary' : '');
-  b.textContent = label; b.addEventListener('click', fn); return b;
-}
-function renderCommission() {
-  const { s, status } = cState();
-  $('cTitle').textContent = cMode.practice ? 'Practice brief · unscored' : `Daily commission · No. ${commissionNo(todayKey())}`;
-  const last = s.tries[s.tries.length - 1];
-  const ul = $('cReqs'); ul.textContent = '';
-  cMode.reqs.forEach((c, i) => {
-    const li = document.createElement('li');
-    const state = last ? (last[i] ? 'met' : 'miss') : 'idle';
-    li.dataset.state = state;
-    const mk = document.createElement('span'); mk.className = 'c-mark'; mk.textContent = state === 'met' ? '✓' : state === 'miss' ? '✕' : '○';
-    mk.setAttribute('aria-label', state === 'met' ? 'met' : state === 'miss' ? 'not met' : 'not tried');
-    const tx = document.createElement('span'); tx.textContent = c.label;
-    li.append(mk, tx); ul.appendChild(li);
-  });
-  const pips = $('cPips'); pips.textContent = '';
-  for (let i = 0; i < MAX_TRIES; i++) {
-    const p = document.createElement('span');
-    p.className = 'c-pip' + (i < s.tries.length ? (s.solved && i === s.tries.length - 1 ? ' win' : ' used') : '');
-    pips.appendChild(p);
-  }
-  pips.setAttribute('aria-label', `${s.tries.length} of ${MAX_TRIES} growths used`);
-  const stamp = $('cStamp');
-  stamp.hidden = !(status === 'solved' || status === 'failed');
-  stamp.textContent = status === 'solved' ? 'Fulfilled' : 'Closed';
-  stamp.classList.toggle('fail', status === 'failed');
-  const msg = $('cMsg'), acts = $('cActions');
-  msg.textContent = ''; acts.textContent = '';
-  const st = streak();
-  const streakTxt = !cMode.practice && st ? ` Streak: ${plural(st, 'day', 'days')}.` : '';
-  if (status === 'idle') {
-    msg.textContent = s.tries.length ? `Paused after ${plural(s.tries.length, 'growth', 'growths')}.${streakTxt}` : `You get ${MAX_TRIES} growths. Plan your line using the key below.${streakTxt}`;
-    acts.append(cButton(s.tries.length ? 'Resume' : 'Start commission', true, () => { cMode.active = true; renderCommission(); verse.focus(); verse.select(); }));
-  } else if (status === 'active') {
-    const metN = last ? last.filter(Boolean).length : 0;
-    msg.textContent = last ? `Last growth met ${metN} of 3. Edit your line and grow again.` : 'Write a line and press Grow. Each growth uses one seed.';
-    acts.append(cButton('Pause', false, () => { cMode.active = false; renderCommission(); }));
+  if (st.s === 'open') {
+    status$.textContent = 'You’re in your window';
+    sub.append('It closes in ', count(), '. Prove you’re up:');
+    buildChallenge(body, completeCheckIn);
+  } else if (st.s === 'woke') {
+    status$.textContent = 'Up at ' + fmtTime(st.e.at);
+    sub.textContent = `Proved ${PROOF[st.e.proof]}. Your plant grew a node. Next window: ${fmtNext(nextWindow(now), now)}.`;
+    body.append(el('span', { class: 'stamp' }, 'Awake'));
+  } else if (st.s === 'missed') {
+    status$.textContent = 'You missed this morning';
+    sub.textContent = `The window closed at ${fmtTime(st.b)}, and your plant dropped some leaves. Next window: ${fmtNext(nextWindow(now), now)}.`;
+    body.append(el('span', { class: 'stamp miss' }, 'Missed'), practiceBtn());
+  } else if (st.s === 'upcoming') {
+    status$.append('Your window opens in ', count());
+    sub.textContent = `Check in between ${fmtTime(st.a)} and ${fmtTime(st.b)}. Set an alarm on your phone; this page can’t ring.`;
+    body.append(practiceBtn());
+  } else if (st.s === 'rest') {
+    status$.textContent = 'Rest day';
+    sub.textContent = `No check-in today. Next window: ${fmtNext(nextWindow(now), now)}.`;
+    body.append(practiceBtn());
   } else {
-    if (status === 'solved') { msg.append('Fulfilled with '); const b = document.createElement('b'); b.textContent = '“' + s.line + '”'; msg.append(b, '.' + streakTxt); }
-    else msg.textContent = cMode.practice ? 'Out of growths for this brief.' : 'Out of growths. A new commission arrives tomorrow.' + streakTxt;
-    acts.append(cButton('Copy result', true, () => {
-      const txt = resultText();
-      const fallback = () => { shareField.value = txt; shareField.rows = txt.split('\n').length; shareField.hidden = false; shareField.focus(); shareField.select(); hint.textContent = 'Copy your result from the box above.'; };
-      try { navigator.clipboard.writeText(txt).then(() => toast('Result copied'), fallback); } catch (e) { fallback(); }
-    }));
-    if (status === 'solved') acts.append(cButton('View the winning plant', false, () => viewLine(s.line)));
+    status$.textContent = 'Tracking starts ' + fmtNext(nextWindow(now), now);
+    sub.textContent = 'Today’s window had already opened when you planted, so your first morning is the next one. Set an alarm for it.';
+    body.append(practiceBtn());
   }
-  if (cMode.practice) acts.append(cButton('Back to daily', false, () => { cMode = { practice: false, active: false, reqs: makeReqs('daily:' + todayKey()), day: null }; renderCommission(); }));
-  if (status === 'solved' || status === 'failed' || cMode.practice) {
-    acts.append(cButton(cMode.practice ? 'New brief' : 'Practice brief', false, () => {
-      cMode = { practice: true, active: true, reqs: makeReqs('practice:' + Math.random()), day: { tries: [], solved: false, line: '' } };
-      renderCommission(); verse.focus(); verse.select();
-    }));
+}
+
+/* ---------- schedule form (used to plant and to edit) ---------- */
+function scheduleForm(host, init, submitLabel, onSave) {
+  host.textContent = '';
+  const s = el('input', { type: 'time', id: host.id + '-start', value: init.start, required: true });
+  const e = el('input', { type: 'time', id: host.id + '-end', value: init.end, required: true });
+  const days = new Set(init.days);
+  const dayRow = el('div', { class: 'days', role: 'group', 'aria-label': 'Days to check in' });
+  [1, 2, 3, 4, 5, 6, 0].forEach(d => {
+    const b = el('button', { type: 'button', class: 'day', 'aria-pressed': String(days.has(d)) }, DOW[d]);
+    b.addEventListener('click', () => { if (days.has(d)) days.delete(d); else days.add(d); b.setAttribute('aria-pressed', String(days.has(d))); });
+    dayRow.appendChild(b);
+  });
+  const err = el('p', { class: 'err', role: 'alert' });
+  const save = el('button', { type: 'button', class: 'btn primary' }, submitLabel);
+  save.addEventListener('click', () => {
+    const a = s.value, b = e.value;
+    const mins = v => { const [h, m] = v.split(':').map(Number); return h * 60 + m; };
+    if (!HHMM.test(a) || !HHMM.test(b)) { err.textContent = 'Choose both a start and an end time.'; return; }
+    if (mins(b) <= mins(a)) { err.textContent = 'The window has to end after it starts, on the same day.'; return; }
+    if (mins(b) - mins(a) < 10) { err.textContent = 'Make the window at least 10 minutes long.'; return; }
+    if (mins(b) - mins(a) > 240) { err.textContent = 'Keep the window to 4 hours or less.'; return; }
+    if (!days.size) { err.textContent = 'Pick at least one day.'; return; }
+    err.textContent = '';
+    onSave({ start: a, end: b, days: [...days].sort((x, y) => x - y) });
+  });
+  host.append(el('div', { class: 'sched' },
+    el('div', { class: 'times' }, el('label', { for: s.id }, 'From', s), el('label', { for: e.id }, 'To', e)),
+    dayRow, err, el('div', { class: 'actions' }, save)));
+}
+function plantSeed(sc) {
+  S = { v: 1, seed: (Math.random() * 4294967295) >>> 0, schedules: [{ since: Date.now(), ...sc }], log: {}, seenLoss: 0, pref: 'quote' };
+  persist();
+  todaySig = ''; lastSig = '';
+  renderAll(true);
+  toast('Planted. ' + ($('tStatus').textContent || ''));
+}
+function saveSchedule(sc) {
+  const cur = S.schedules[S.schedules.length - 1];
+  if (cur.start === sc.start && cur.end === sc.end && cur.days.join() === sc.days.join()) { toast('That’s already your schedule.'); return; }
+  S.schedules.push({ since: Date.now(), ...sc });
+  if (S.schedules.length > 200) S.schedules = S.schedules.slice(-200);
+  persist();
+  todaySig = ''; renderAll();
+  toast('Saved. The new window starts with your next morning.');
+}
+
+/* ---------- everything else on the page ---------- */
+function renderStats(ev) {
+  $('sStreak').textContent = ev ? ev.streak : 0;
+  $('sBest').textContent = ev ? ev.best : 0;
+  $('sWoke').textContent = ev ? ev.woke : 0;
+  const n = ev ? ev.woke + ev.missed : 0;
+  const rate = $('sRate'); rate.textContent = '';
+  if (n) rate.append(String(Math.round(ev.woke / n * 100)), el('small', {}, '%')); else rate.textContent = '–';
+}
+function renderLabel(ev) {
+  const pl = plant;
+  $('lName').textContent = S ? nameFor(S.seed) : 'Unnamed seedling';
+  const startKey = S ? keyOf(new Date(S.schedules[0].since)) : null;
+  const dayN = S ? Math.round((dateOf(keyOf(new Date())) - dateOf(startKey)) / 86400000) + 1 : 0;
+  $('lDay').textContent = 'Day ' + dayN;
+  $('plateNo').textContent = S ? `SP · Day ${dayN}` : 'SP · Seed';
+  const sc = S ? S.schedules[S.schedules.length - 1] : null;
+  $('lLine').textContent = sc ? `Wakes between ${fmtHHMM(sc.start)} and ${fmtHHMM(sc.end)}, ${fmtDays(sc.days)}.` : 'Not planted yet.';
+  $('lHeight').textContent = (pl ? pl.st.height : 0) + ' cm';
+  $('lNodes').textContent = pl ? pl.nodes : 0;
+  $('lLeaves').textContent = pl ? `${pl.leafTotal - pl.leafShed}/${pl.leafTotal}` : '0';
+  $('lFlowers').textContent = pl ? pl.st.flowers : 0;
+  $('lFoot').textContent = S ? `Planted ${dateOf(startKey).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` + (ev && ev.woke >= 40 ? ' · fully grown' : '') : 'Each morning you’re up on time adds a node.';
+  const desc = !S ? 'A seed waiting to be planted.' : `${nameFor(S.seed)}: ${plural(pl.nodes, 'node', 'nodes')}, ${pl.leafTotal - pl.leafShed} of ${plural(pl.leafTotal, 'leaf', 'leaves')} still on, ${plural(pl.st.flowers, 'flower', 'flowers')}.`;
+  sheet.setAttribute('aria-label', desc);
+}
+function renderCalendar(hist, now) {
+  const cal = $('cal'); cal.textContent = '';
+  ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].forEach(d => cal.appendChild(el('div', { class: 'dow', 'aria-hidden': 'true' }, d[0])));
+  const today = keyOf(new Date(now));
+  const dow = (dateOf(today).getDay() + 6) % 7;
+  const first = addDays(today, -dow - 28);
+  const map = new Map((hist || []).map(h => [h.k, h]));
+  for (let i = 0; i < 35; i++) {
+    const k = addDays(first, i), h = map.get(k);
+    const s = k > today ? 'future' : h ? h.s : 'untracked';
+    const label = {
+      woke: h && h.e ? `up at ${fmtTime(h.e.at)}` : '', missed: 'missed', rest: 'rest day', upcoming: 'window still to come',
+      open: 'window open now', untracked: 'not tracked', future: 'still to come'
+    }[s];
+    cal.appendChild(el('div', { class: `cell ${s}${k === today ? ' today' : ''}`, title: `${fmtDayShort(k)}: ${label}`, 'aria-label': `${fmtDayShort(k)}: ${label}`, role: 'img' }, String(dateOf(k).getDate())));
   }
-  const growBtn = $('growBtn');
-  growBtn.textContent = status === 'active' ? `Grow · ${s.tries.length + 1} of ${MAX_TRIES}` : 'Grow';
+}
+function renderSync() {
+  const n = $('sync');
+  n.textContent = syncMode === 'cloud' ? 'Saved to your claude.ai account, so it follows you to other devices. Only you can see it.' : 'Saved in this browser only. Open this page on claude.ai, signed in, to keep it in sync across devices.';
+}
+function renderReset() {
+  const r = $('reset'); r.textContent = '';
+  const b = el('button', { type: 'button', class: 'btn' }, 'Start over');
+  b.addEventListener('click', () => {
+    r.textContent = '';
+    const yes = el('button', { type: 'button', class: 'btn danger' }, 'Delete my plant');
+    const no = el('button', { type: 'button', class: 'btn' }, 'Keep it');
+    yes.addEventListener('click', () => { S = null; persist(); lastSig = ''; todaySig = ''; renderAll(true); toast('Deleted. Plant a new seed whenever you’re ready.'); });
+    no.addEventListener('click', renderReset);
+    r.append(el('span', {}, 'Delete your plant and every morning on record?'), yes, no);
+  });
+  r.append(b);
+}
+let lastSig = '';
+function renderAll(forceAnimate = false) {
+  const now = Date.now();
+  $('setup').hidden = !!S; $('today').hidden = !S; $('settings').hidden = !S;
+  if (!S) {
+    if (!$('setupForm').childElementCount) scheduleForm($('setupForm'), { start: '06:30', end: '07:30', days: [1, 2, 3, 4, 5] }, 'Plant my seed', plantSeed);
+    if (lastSig !== 'seed') { lastSig = 'seed'; show(plantFrom([], 0, 1), forceAnimate); }
+    renderStats(null); renderLabel(null); renderCalendar(null, now);
+    return;
+  }
+  $('setupForm').textContent = '';
+  const hist = history(now), ev = evaluate(hist);
+  const sig = JSON.stringify([S.seed, ev.succ.map(x => x.k + (x.broke ? '?' : '')), ev.loss]);
+  if (sig !== lastSig || forceAnimate) {
+    lastSig = sig;
+    const pl = plantFrom(ev.succ, ev.loss, S.seed, Math.min(S.seenLoss, ev.loss));
+    show(pl, true);
+    if (pl.newlyShed > 0) toast(`Missed mornings: your plant dropped ${plural(pl.newlyShed, 'leaf', 'leaves')}.`);
+    if (S.seenLoss !== ev.loss) { S.seenLoss = ev.loss; persist(); }
+  }
+  renderToday(hist, ev, now);
+  renderStats(ev); renderLabel(ev); renderCalendar(hist, now);
+  const sc = S.schedules[S.schedules.length - 1];
+  $('schedNow').textContent = `You check in between ${fmtHHMM(sc.start)} and ${fmtHHMM(sc.end)}, ${fmtDays(sc.days)}. A change starts with your next window, so it can’t rescue a morning already under way.`;
+  if (!$('editForm').childElementCount || $('editForm').dataset.sig !== JSON.stringify(sc)) {
+    scheduleForm($('editForm'), sc, 'Save schedule', saveSchedule);
+    $('editForm').dataset.sig = JSON.stringify(sc);
+  }
+  renderSync();
+  if (!$('reset').childElementCount) renderReset();
+}
+
+/* ---------- what it looks like over time ---------- */
+function renderDemos() {
+  const host = $('demos');
+  const demos = [
+    ['wwww', 'After four mornings', 'A short stem. The third morning in a row set a bud.'],
+    ['wwwwwrrwwwwwrr', 'Two weeks, weekends off', 'Rest days don’t break the streak. The seventh morning in a row flowered.'],
+    ['wwwwwrrwwwwwrrmmm', 'Then three missed mornings', 'Most of the leaves are on the ground, and a tendril marks where the streak broke.']
+  ];
+  const dp = makePaper(170, 212.5, 2, 11);
+  for (const [seq, title, text] of demos) {
+    const hist = [...seq].map((c, i) => ({ k: 'demo-' + i, s: c === 'w' ? 'woke' : c === 'm' ? 'missed' : 'rest' }));
+    const ev = evaluate(hist);
+    const pl = plantFrom(ev.succ, ev.loss, 20261105);
+    const c = el('canvas', { width: '340', height: '425', 'aria-hidden': 'true' });
+    const g = c.getContext('2d'); g.setTransform(2, 0, 0, 2, 0, 0);
+    g.drawImage(dp, 0, 0, 170, 212.5);
+    const f = fit(pl, 170, 212.5);
+    g.strokeStyle = 'rgba(234,242,251,.16)'; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(f.ox + (pl.b.x0 - 10) * f.S, Math.round(f.oy) + .5); g.lineTo(f.ox + (pl.b.x1 + 10) * f.S, Math.round(f.oy) + .5); g.stroke();
+    drawPlantAt(g, pl, 0, 0, 170, 212.5, Infinity, { glow: 2 });
+    host.appendChild(el('figure', { class: 'demo' }, c, el('figcaption', {}, el('b', {}, title), text)));
+  }
+}
+
+/* ---------- sync with the viewer's claude.ai account (private to them) ---------- */
+async function initCloud() {
+  if (!window.claude || typeof window.claude.use !== 'function') return;
+  const [db, u] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
+  if (!db || !u) return;
+  const id = await u.id();
+  if (!id) return;
+  cloudRef = db.doc('data/users/' + id + '/sunprint');
+  let first = true;
+  cloudRef.onSnapshot(snap => {
+    const d = snap.exists ? sanitize(snap.data()) : null;
+    if (first) {
+      first = false;
+      syncMode = 'cloud';
+      if (d) { S = d; saveLocal(); }
+      else if (S) persist();          // first visit on claude.ai: move this browser's plant into the account
+      todaySig = ''; renderAll(); return;
+    }
+    if (snap.metadata.hasPendingWrites) return;
+    const next = d;
+    if (JSON.stringify(next) !== JSON.stringify(S)) { S = next; saveLocal(); todaySig = ''; renderAll(); }
+  }, () => { syncMode = 'local'; renderSync(); });
 }
 
 /* ---------- theme: Auto follows the viewer's claude.ai or system setting ---------- */
-const THEME_KEY = 'verse-garden:theme';
 const rootEl = document.documentElement;
-let hostTheme = rootEl.getAttribute('data-theme');
-let themeChoice = 'auto', ourTheme = null;
-try { const s = localStorage.getItem(THEME_KEY); if (s === 'light' || s === 'dark') themeChoice = s; } catch (e) { /* auto */ }
+let hostTheme = rootEl.getAttribute('data-theme'), themeChoice = 'auto', ourTheme = null;
+try { const s = localStorage.getItem('sunprint:theme'); if (s === 'light' || s === 'dark') themeChoice = s; } catch (e) { /* auto */ }
 function applyTheme() {
   ourTheme = themeChoice === 'auto' ? hostTheme : themeChoice;
   if (ourTheme) rootEl.setAttribute('data-theme', ourTheme); else rootEl.removeAttribute('data-theme');
   document.querySelectorAll('#themeSwitch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.choice === themeChoice)));
 }
-// if the host changes its theme while the page is open, remember it for Auto
 new MutationObserver(() => {
   const v = rootEl.getAttribute('data-theme');
   if (v === ourTheme) return;
-  hostTheme = v;
-  applyTheme();
+  hostTheme = v; applyTheme();
 }).observe(rootEl, { attributes: true, attributeFilter: ['data-theme'] });
 $('themeSwitch').addEventListener('click', e => {
   const b = e.target.closest('button[data-choice]');
   if (!b) return;
   themeChoice = b.dataset.choice;
-  try { localStorage.setItem(THEME_KEY, themeChoice); } catch (err) { /* not saved */ }
+  try { localStorage.setItem('sunprint:theme', themeChoice); } catch (err) { /* not saved */ }
   applyTheme();
 });
 applyTheme();
 
 /* ---------- boot ---------- */
-const shared = decodeShare(location.hash.slice(1));
-if (shared) verse.value = shared;
-plant = grow(verse.value);
-updateLabel();
+S = loadLocal();
 sizePlate();
 new ResizeObserver(() => sizePlate()).observe(plateEl);
-renderHerb();
-renderJournal();
-renderCommission();
-play(verse.value, true);
-sizeBed();
-new ResizeObserver(() => sizeBed()).observe(bedWrap);
-startGarden();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { frame(); drawBed(); });
+renderDemos();
+renderAll(true);
+setInterval(() => renderAll(), 20000);
+initCloud();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => frame());
 })();
 </script>
 </body>
