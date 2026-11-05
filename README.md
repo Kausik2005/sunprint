@@ -2,7 +2,9 @@
 
 Type a line and it grows into a plant. The same words always grow the same plant, printed as a cyanotype (the old blue sun-print process) and given a made-up Latin name.
 
-**Play it:** https://claude.ai/artifact/8Hgv9WXDpyV6MGWf5tQRBd
+**Play it:** https://kausik2005.github.io/verse-garden/
+
+Or on claude.ai, where the shared garden also works: https://claude.ai/artifact/8Hgv9WXDpyV6MGWf5tQRBd
 
 ## How words become a plant
 
@@ -24,6 +26,6 @@ Type a line and it grows into a plant. The same words always grow the same plant
 
 ## Running it
 
-It's a single file, `index.html`, with no build step. Open it in a browser, or serve it with GitHub Pages.
+It's a single file, `index.html`, with no build step. Open it in a browser, or visit the GitHub Pages site above, which serves it straight from `main`.
 
 The **shared garden** only works on the claude.ai page, because it uses claude.ai's shared storage. Everywhere else it shows a note saying so, and everything else works.
